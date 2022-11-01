@@ -1,4 +1,4 @@
-# Cl-nica_veterin-ria-
+# Clínica_veterinária-
 
 ESTUDO DE CASO 02 - PRÁTICAS I
 
