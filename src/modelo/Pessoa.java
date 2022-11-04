@@ -7,7 +7,7 @@ public class Pessoa {
 
 	public String nome;
 	public int cpf;
-	public LocalDate dataNascimento;
+	//public LocalDate dataNascimento;
 	public ArrayList<Animal> animais;
 	public Endereco endereco;
 
@@ -15,7 +15,7 @@ public class Pessoa {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
+	//	this.dataNascimento = dataNascimento;
 	}
 
 	public Pessoa() {
@@ -38,12 +38,12 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
-	}
+	//public LocalDate getDataNascimento() {
+	//	return dataNascimento;
+	//}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
+	//public void setDataNascimento(LocalDate dataNascimento) {
+	//	this.dataNascimento = dataNascimento;
+	//}
 
 }
