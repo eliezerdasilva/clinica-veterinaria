@@ -1,19 +1,25 @@
 package modelo;
 
-import java.sql.Array;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Pessoa {
-	
-	public String nome;
-	public  int cpf;
-	public int idade;
 
-	
-	public Pessoa(String nome, int cpf, int idade) {
+	public String nome;
+	public int cpf;
+	public LocalDate dataNascimento;
+	public ArrayList<Animal> animais;
+	public Endereco endereco;
+
+	public Pessoa(String nome, int cpf, LocalDate dataNascimento) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
-		this.idade = idade;
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Pessoa() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getNome() {
@@ -32,16 +38,12 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public int getIdade() {
-		return idade;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setIdade(int idade) {
-		this.idade = idade;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
-	
-	
-	 
+
 }
-
-
