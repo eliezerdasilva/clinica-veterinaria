@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Pessoa {
 
-	public String nome;
-	public int cpf;
+	private String nome;
+	private String cpf;
 	//public LocalDate dataNascimento;
 	public ArrayList<Animal> animais;
 	public Endereco endereco;
 
-	public Pessoa(String nome, int cpf, LocalDate dataNascimento) {
+	public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -30,11 +30,11 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

@@ -1,25 +1,25 @@
 package visao;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.PessoaControl;
-import modelo.Pessoa;
+import modelo.Animal;
 
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+public class TelaAnimal extends JFrame {
 
-public class TelaInicio extends JFrame {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField nome;
+	private JTextField raca;
+	private PessoaControl listPessoa;
+	
 
 	/**
 	 * Launch the application.
@@ -28,7 +28,7 @@ public class TelaInicio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaInicio frame = new TelaInicio();
+					TelaAnimal frame = new TelaAnimal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +40,7 @@ public class TelaInicio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaInicio() {
+	public TelaAnimal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,20 +48,32 @@ public class TelaInicio extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JButton btnNewButton = new JButton("New button");
+		
+		nome = new JTextField();
+		nome.setBounds(29, 44, 86, 20);
+		contentPane.add(nome);
+		nome.setColumns(10);
+		
+		raca = new JTextField();
+		raca.setBounds(188, 44, 86, 20);
+		contentPane.add(raca);
+		raca.setColumns(10);
+		
+		JButton btnNewButton = new JButton("cadastra");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				Pessoa p = new Pessoa();
-				p.setCpf(ABORT);
 				
-				PessoaControl control = new PessoaControl();
-				control.inserir(p);
+				String n = nome.getText();
+				String rc = raca.getText();
+				
+				 Animal animal = new Animal();
 			}
 		});
-		btnNewButton.setBounds(172, 10, 89, 23);
+		btnNewButton.setBounds(71, 108, 89, 23);
 		contentPane.add(btnNewButton);
 	}
-
+ public void tabela(PessoaControl p) {
+	 listPessoa = p;
+ }
+	
 }
