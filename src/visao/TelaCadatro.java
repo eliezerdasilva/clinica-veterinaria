@@ -20,10 +20,12 @@ public class TelaCadatro extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	protected static final TelaCadatro TelaAnimal = null;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField cpf;
 	public  PessoaControl  listPessoa = new PessoaControl();
+	
 
 	/**
 	 * Launch the application.
@@ -33,7 +35,10 @@ public class TelaCadatro extends JFrame {
 			public void run() {
 				try {
 					TelaCadatro frame = new TelaCadatro();
+					
 					frame.setVisible(true);
+
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -79,6 +84,7 @@ public class TelaCadatro extends JFrame {
 				String n = nome.getText();
 				String cp = cpf.getText();
 				
+				
 				Pessoa p = new Pessoa();
 				p.setNome(n);
 				p.setCpf(cp);
@@ -86,10 +92,14 @@ public class TelaCadatro extends JFrame {
 				
 				listPessoa.inserir(p);
 				
-				listPessoa.listaPessoas();
 				
-				TelaCadatro tc = new TelaCadatro();
-				tc.tabela(listPessoa);
+				
+				TelaAnimal tc = new TelaAnimal();
+				tc.TabelaAnimal();
+				
+				listPessoa.listaPessoas();
+	
+
 			
 			}
 		});
