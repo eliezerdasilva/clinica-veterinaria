@@ -8,7 +8,7 @@ public class Pessoa {
 	private String nome;
 	private String cpf;
 	//public LocalDate dataNascimento;
-	public ArrayList<Animal> animais;
+	public ArrayList<Animal> animais = new ArrayList<>();
 	public Endereco endereco;
 
 	public Pessoa(String nome, String cpf, LocalDate dataNascimento) {
@@ -38,6 +38,21 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
+	public ArrayList<Animal> getAnimais() {
+		return animais;
+	}
+
+	public void setAnimais(ArrayList<Animal> animais) {
+		this.animais = animais;
+	}
+	
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
 	//public LocalDate getDataNascimento() {
 	//	return dataNascimento;
 	//}
@@ -45,5 +60,6 @@ public class Pessoa {
 	//public void setDataNascimento(LocalDate dataNascimento) {
 	//	this.dataNascimento = dataNascimento;
 	//}
+	
 
 }

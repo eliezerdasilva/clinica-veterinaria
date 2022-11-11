@@ -8,8 +8,8 @@ import modelo.Pessoa;
 public class AnimalControl {
 
 private ArrayList<Animal> tabela = new ArrayList<Animal>(); 
-	
-	
+
+
 	// INSERT
 	public boolean inserir(Animal animal) {
 		this.tabela.add(animal);

@@ -1,23 +1,32 @@
 package modelo;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Animal {
 
+	private String tipo;
 	private String nome;
 	private String raca;
-	private ArrayList<Pessoa> tabelalista = new ArrayList<>();
+	private ArrayList<Animal> tabelalista = new ArrayList<>();
 
-	public Animal(String nome, String raca) {
+	public Animal(String tipo, String nome, String raca) {
 		super();
+		this.tipo = tipo;
 		this.nome = nome;
 		this.raca = raca;
-	//	this.dataNascimento = dataNascimento;
+		// this.dataNascimento = dataNascimento;
 	}
 
 	public Animal() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getTipo() {
+		return tipo;
 	}
 
 	public String getNome() {
@@ -32,7 +41,12 @@ public class Animal {
 		return raca;
 	}
 
-	public void setraca(String raca) {
+	public void setRaca(String raca) {
 		this.raca = raca;
-}
+	}
+	@Override
+	public String toString() {
+		
+		return tipo+" - "+ nome + "("+raca+")";
+	}
 }
