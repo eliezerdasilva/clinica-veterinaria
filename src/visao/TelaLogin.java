@@ -1,5 +1,6 @@
 package visao;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,10 +16,6 @@ import javax.swing.border.EmptyBorder;
 
 import controle.PessoaAnimalControl;
 import modelo.Pessoa;
-import java.awt.Color;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.JToggleButton;
-import javax.swing.SwingConstants;
 
 public class TelaLogin extends JFrame {
 
