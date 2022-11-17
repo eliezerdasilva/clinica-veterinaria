@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controle.TutorControl;
-import modelo.Tutor;
+import controle.FuncionarioControl;
+import modelo.Funcionario;
 
 public class TelaLogin extends JFrame {
 
@@ -24,8 +24,8 @@ public class TelaLogin extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField nome;
-	private JTextField cpf;
+	private JTextField txtLogin;
+	private JTextField txtSenha;
 
 	/**
 	 * Launch the application.
@@ -56,10 +56,10 @@ public class TelaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		nome = new JTextField();
-		nome.setBounds(100, 67, 86, 20);
-		contentPane.add(nome);
-		nome.setColumns(10);
+		txtLogin = new JTextField();
+		txtLogin.setBounds(100, 67, 86, 20);
+		contentPane.add(txtLogin);
+		txtLogin.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Login");
 		lblNewLabel.setBounds(27, 70, 46, 14);
@@ -70,52 +70,52 @@ public class TelaLogin extends JFrame {
 		lblNewLabel_1.setBounds(170, 24, 189, 32);
 		contentPane.add(lblNewLabel_1);
 
-		cpf = new JTextField();
-		cpf.setBounds(100, 98, 86, 20);
-		contentPane.add(cpf);
-		cpf.setColumns(10);
+		txtSenha = new JTextField();
+		txtSenha.setBounds(100, 98, 86, 20);
+		contentPane.add(txtSenha);
+		txtSenha.setColumns(10);
 
 		JLabel lblNewLabel_2 = new JLabel("Senha");
 		lblNewLabel_2.setBounds(27, 101, 46, 14);
 		contentPane.add(lblNewLabel_2);
 
-		JButton btnNewButton = new JButton("Entra");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLogar = new JButton("Entra");
+		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String n = nome.getText();
-				String cp = cpf.getText();
+				String loginStr = txtLogin.getText();
+				String senhaStr = txtSenha.getText();
 
-				TutorControl controle = TutorControl.getIntancia();
-				Tutor p = controle.buscarTutor(n, cp);
-				if (p != null) {
+				FuncionarioControl controle = new FuncionarioControl();
+				Funcionario funcionario = controle.buscar(loginStr, senhaStr);
+				if (funcionario != null) {
 					dispose();
-					TelaAnimal telaAnimal = new TelaAnimal(p);
-					telaAnimal.setLocationRelativeTo(null);
-					telaAnimal.setVisible(true);
+					TelaClinica telaClinica = new TelaClinica();
+					telaClinica.setLocationRelativeTo(null);
+					telaClinica.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Erro", JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		});
-		btnNewButton.setBounds(97, 147, 89, 23);
-		contentPane.add(btnNewButton);
+		btnLogar.setBounds(100, 129, 86, 23);
+		contentPane.add(btnLogar);
 
 		JLabel lblNewLabel_3 = new JLabel("Não tem cadastro? Cadastre-se");
 		lblNewLabel_3.setForeground(new Color(255, 0, 0));
 		lblNewLabel_3.setBounds(62, 204, 199, 14);
 		contentPane.add(lblNewLabel_3);
 
-		JButton btnNewButton_1 = new JButton("Cadastre-se");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnCadastrarTutor = new JButton("Cadastre-se");
+		btnCadastrarTutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				TelaCadastroTutor telaCadastroTutor = new TelaCadastroTutor();
-				telaCadastroTutor.setLocationRelativeTo(null);
-				telaCadastroTutor.setVisible(true);
+				TelaCadastroFunc telaFunc = new TelaCadastroFunc();
+				telaFunc.setLocationRelativeTo(null);
+				telaFunc.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(62, 227, 144, 23);
-		contentPane.add(btnNewButton_1);
+		btnCadastrarTutor.setBounds(62, 227, 144, 23);
+		contentPane.add(btnCadastrarTutor);
 	}
 }
