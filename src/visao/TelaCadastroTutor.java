@@ -15,18 +15,18 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.AnimalControl;
-import controle.ClienteControl;
-import modelo.Cliente;
+import controle.TutorControl;
+import modelo.Tutor;
 import javax.swing.JTable;
 
-public class TelaCliente extends JFrame {
+public class TelaCadastroTutor extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected static final TelaCliente TelaAnimal = null;
+	protected static final TelaCadastroTutor TelaAnimal = null;
 
 	private JPanel contentPane;
 
@@ -34,7 +34,7 @@ public class TelaCliente extends JFrame {
 
 	private JTextField cpf;
 
-	public ClienteControl listPessoa = ClienteControl.getIntancia();
+	public TutorControl listPessoa = TutorControl.getIntancia();
 
 	public AnimalControl listAnimal = new AnimalControl();
 
@@ -60,7 +60,7 @@ public class TelaCliente extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaCliente frame = new TelaCliente();
+					TelaCadastroTutor frame = new TelaCadastroTutor();
 
 					frame.setVisible(true);
 
@@ -74,7 +74,7 @@ public class TelaCliente extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaCliente() {
+	public TelaCadastroTutor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 668, 452);
 		contentPane = new JPanel();
@@ -142,35 +142,35 @@ public class TelaCliente extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String n = nome.getText();
-				String cp = cpf.getText();
-				// String ce = cep.getText();
-				// String ru= rua.getText();
-				// String nucasa = numcasa.getText();
+				String nomeTutorStr = nome.getText();
+				String cpfTutorStr = cpf.getText();
 
-				Cliente novaPessoa = new Cliente();
+				Tutor novoTutor = new Tutor();
 
-				if (nome == null || n.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nenhum 'nome' preenchido!");
+				if (nomeTutorStr.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nenhum nome preenchido!");
 				} else {
-					novaPessoa.setNome(n);
-				}
-				if (cpf == null || cp.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Nenhum 'cpf' preenchido!");
-				} else {
-					novaPessoa.setCpf(Long.parseLong(cp));
+					novoTutor.setNome(nomeTutorStr);
 				}
 
-				ClienteControl tabelaPessoa = new ClienteControl();
-				boolean inserir = tabelaPessoa.inserir(novaPessoa);
+				if (cpfTutorStr.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Nenhum CPF preenchido!");
+				} else {
+					novoTutor.setCpf(Long.valueOf(cpfTutorStr));
+				}
 
-				// Endereco endereco = new Endereco();
-				// endereco.setCep(ce);
-				// endereco.setRua(ru);
-				// endereco.setNumCasa(nucasa);
-				// p.setEndereco(endereco);
+				TutorControl tabelaTutor = new TutorControl();
+				boolean inserir = tabelaTutor.inserir(novoTutor);
 
-				listPessoa.inserir(p);
+				if (inserir == true) {
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+					dispose();
+					TelaLogin telaLogin = new TelaLogin();
+					telaLogin.setLocationRelativeTo(null);
+					telaLogin.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+				}
 
 			}
 
@@ -183,11 +183,11 @@ public class TelaCliente extends JFrame {
 		lblNewLabel_4.setForeground(new Color(0, 0, 0));
 		lblNewLabel_4.setBounds(237, 11, 180, 14);
 		contentPane.add(lblNewLabel_4);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 249, 399, 153);
 		contentPane.add(panel);
-		
+
 		table = new JTable();
 		panel.add(table);
 
