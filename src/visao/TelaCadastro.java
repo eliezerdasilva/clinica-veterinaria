@@ -25,21 +25,34 @@ public class TelaCadastro extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	protected static final TelaCadastro TelaAnimal = null;
+	
 	private JPanel contentPane;
+	
 	private JTextField nome;
+	
 	private JTextField cpf;
+	
 	public  PessoaAnimalControl  listPessoa =  PessoaAnimalControl.getIntancia();
+	
 	public AnimalControl listAnimal = new AnimalControl();
+	
 	private JTextField cep;
+	
 	private JLabel lblNewLabel_2;
+	
 	private JTextField rua;
+	
 	private JLabel lblNewLabel_3;
+	
 	private JTextField textField_2;
+	
 	private JLabel numcasa;
+	
 	private JLabel lblNewLabel_4;
 	
-
+	
 	/**
 	 * Launch the application.
 	 */
