@@ -44,9 +44,10 @@ public class Animal {
 	public void setRaca(String raca) {
 		this.raca = raca;
 	}
+
 	@Override
 	public String toString() {
-		
-		return tipo+" - "+ nome + "("+raca+")";
+
+		return tipo + " - " + nome + "(" + raca + ")";
 	}
 }

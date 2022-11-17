@@ -16,9 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.AnimalControl;
-import controle.PessoaAnimalControl;
+import controle.ClienteControl;
 import modelo.Animal;
-import modelo.Pessoa;
+import modelo.Cliente;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionListener;
@@ -26,12 +26,16 @@ import javax.swing.event.ListSelectionEvent;
 
 public class TelaAnimal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JComboBox<String> cmbAnimal;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField raca;
-	private Pessoa pessoa;
-	public PessoaAnimalControl listPessoa = PessoaAnimalControl.getIntancia();
+	private Cliente pessoa;
+	public ClienteControl listPessoa = ClienteControl.getIntancia();
 	public AnimalControl tabela = new AnimalControl();
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
@@ -42,7 +46,7 @@ public class TelaAnimal extends JFrame {
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
 
-	public TelaAnimal(Pessoa pessoa) {
+	public TelaAnimal(Cliente pessoa) {
 		this.pessoa = pessoa;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 431);
@@ -210,7 +214,7 @@ public class TelaAnimal extends JFrame {
 	 * Create the frame.
 	 */
 
-	public void tabela(Pessoa p) {
+	public void tabela(Cliente p) {
 		pessoa = p;
 	}
 }

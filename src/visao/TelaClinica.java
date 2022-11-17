@@ -11,7 +11,7 @@ import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.Font;
 
-public class TelaClínica extends JFrame {
+public class TelaClinica extends JFrame {
 
 	private JPanel contentPane;
 
@@ -22,7 +22,7 @@ public class TelaClínica extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaClínica frame = new TelaClínica();
+					TelaClinica frame = new TelaClinica();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class TelaClínica extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaClínica() {
+	public TelaClinica() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
