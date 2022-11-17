@@ -16,9 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.AnimalControl;
-import controle.ClienteControl;
+import controle.TutorControl;
 import modelo.Animal;
-import modelo.Cliente;
+import modelo.Tutor;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionListener;
@@ -34,8 +34,8 @@ public class TelaAnimal extends JFrame {
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField raca;
-	private Cliente pessoa;
-	public ClienteControl listPessoa = ClienteControl.getIntancia();
+	private Tutor pessoa;
+	public TutorControl listPessoa = TutorControl.getIntancia();
 	public AnimalControl tabela = new AnimalControl();
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
@@ -46,7 +46,7 @@ public class TelaAnimal extends JFrame {
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
 
-	public TelaAnimal(Cliente pessoa) {
+	public TelaAnimal(Tutor pessoa) {
 		this.pessoa = pessoa;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 431);
@@ -214,7 +214,7 @@ public class TelaAnimal extends JFrame {
 	 * Create the frame.
 	 */
 
-	public void tabela(Cliente p) {
+	public void tabela(Tutor p) {
 		pessoa = p;
 	}
 }

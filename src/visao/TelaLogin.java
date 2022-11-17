@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controle.ClienteControl;
-import modelo.Cliente;
+import controle.TutorControl;
+import modelo.Tutor;
 
 public class TelaLogin extends JFrame {
 
@@ -35,6 +35,7 @@ public class TelaLogin extends JFrame {
 			public void run() {
 				try {
 					TelaLogin frame = new TelaLogin();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +61,7 @@ public class TelaLogin extends JFrame {
 		contentPane.add(nome);
 		nome.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("Nome: ");
+		JLabel lblNewLabel = new JLabel("Login");
 		lblNewLabel.setBounds(27, 70, 46, 14);
 		contentPane.add(lblNewLabel);
 
@@ -74,7 +75,7 @@ public class TelaLogin extends JFrame {
 		contentPane.add(cpf);
 		cpf.setColumns(10);
 
-		JLabel lblNewLabel_2 = new JLabel("cpf");
+		JLabel lblNewLabel_2 = new JLabel("Senha");
 		lblNewLabel_2.setBounds(27, 101, 46, 14);
 		contentPane.add(lblNewLabel_2);
 
@@ -85,8 +86,8 @@ public class TelaLogin extends JFrame {
 				String n = nome.getText();
 				String cp = cpf.getText();
 
-				ClienteControl controle = ClienteControl.getIntancia();
-				Cliente p = controle.BuscarPessoa(n, cp);
+				TutorControl controle = TutorControl.getIntancia();
+				Tutor p = controle.buscarTutor(n, cp);
 				if (p != null) {
 					dispose();
 					TelaAnimal telaAnimal = new TelaAnimal(p);
@@ -100,18 +101,18 @@ public class TelaLogin extends JFrame {
 		btnNewButton.setBounds(97, 147, 89, 23);
 		contentPane.add(btnNewButton);
 
-		JLabel lblNewLabel_3 = new JLabel("Não tem cadastro?Cadastre-se");
+		JLabel lblNewLabel_3 = new JLabel("Não tem cadastro? Cadastre-se");
 		lblNewLabel_3.setForeground(new Color(255, 0, 0));
 		lblNewLabel_3.setBounds(62, 204, 199, 14);
 		contentPane.add(lblNewLabel_3);
 
-		JButton btnNewButton_1 = new JButton("Cadastra-se");
+		JButton btnNewButton_1 = new JButton("Cadastre-se");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				TelaCliente tc = new TelaCliente();
 				dispose();
-				tc.setVisible(true);
+				TelaCadastroTutor telaCadastroTutor = new TelaCadastroTutor();
+				telaCadastroTutor.setLocationRelativeTo(null);
+				telaCadastroTutor.setVisible(true);
 			}
 		});
 		btnNewButton_1.setBounds(62, 227, 144, 23);
