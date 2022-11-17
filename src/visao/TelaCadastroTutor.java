@@ -21,9 +21,6 @@ import javax.swing.JTable;
 
 public class TelaCadastroTutor extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	protected static final TelaCadastroTutor TelaAnimal = null;

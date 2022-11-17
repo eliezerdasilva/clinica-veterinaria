@@ -63,14 +63,6 @@ public class TutorControl {
 		return this.tabelaTutores;
 	}
 
-	public Tutor buscarTutor(String nome, String cpf) {
-
-		for (Tutor pp : tabelaTutores) {
-			if (pp.getNome().equals(nome) && pp.getCpf().equals(cpf)) {
-				return pp;
-			}
-		}
-		return null;
-	}
+	
 
 }

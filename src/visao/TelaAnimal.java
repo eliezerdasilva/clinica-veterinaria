@@ -1,28 +1,29 @@
 package visao;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import controle.AnimalControl;
 import controle.TutorControl;
 import modelo.Animal;
+import modelo.Funcionario;
 import modelo.Tutor;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
 
 public class TelaAnimal extends JFrame {
 
@@ -34,7 +35,7 @@ public class TelaAnimal extends JFrame {
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField raca;
-	private Tutor pessoa;
+	private Funcionario funcionario;
 	public TutorControl listPessoa = TutorControl.getIntancia();
 	public AnimalControl tabela = new AnimalControl();
 	private JLabel lblNewLabel;
@@ -46,8 +47,8 @@ public class TelaAnimal extends JFrame {
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
 
-	public TelaAnimal(Tutor pessoa) {
-		this.pessoa = pessoa;
+	public TelaAnimal(Funcionario func) {
+		this.funcionario = func;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 431);
 		contentPane = new JPanel();
