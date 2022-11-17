@@ -14,11 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controle.PessoaAnimalControl;
-import modelo.Pessoa;
+import controle.ClienteControl;
+import modelo.Cliente;
 
 public class TelaLogin extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField cpf;
@@ -81,12 +85,13 @@ public class TelaLogin extends JFrame {
 				String n = nome.getText();
 				String cp = cpf.getText();
 
-				PessoaAnimalControl controle = PessoaAnimalControl.getIntancia();
-				Pessoa p = controle.BuscarPessoa(n, cp);
+				ClienteControl controle = ClienteControl.getIntancia();
+				Cliente p = controle.BuscarPessoa(n, cp);
 				if (p != null) {
-					TelaAnimal tc = new TelaAnimal(p);
 					dispose();
-					tc.setVisible(true);
+					TelaAnimal telaAnimal = new TelaAnimal(p);
+					telaAnimal.setLocationRelativeTo(null);
+					telaAnimal.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuário não encontrado", "Erro", JOptionPane.WARNING_MESSAGE);
 				}
@@ -94,17 +99,17 @@ public class TelaLogin extends JFrame {
 		});
 		btnNewButton.setBounds(97, 147, 89, 23);
 		contentPane.add(btnNewButton);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("Não tem cadastro?Cadastre-se");
 		lblNewLabel_3.setForeground(new Color(255, 0, 0));
 		lblNewLabel_3.setBounds(62, 204, 199, 14);
 		contentPane.add(lblNewLabel_3);
-		
+
 		JButton btnNewButton_1 = new JButton("Cadastra-se");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				TelaCadastro tc = new TelaCadastro();
+
+				TelaCliente tc = new TelaCliente();
 				dispose();
 				tc.setVisible(true);
 			}

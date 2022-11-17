@@ -2,52 +2,52 @@ package controle;
 
 import java.util.ArrayList;
 
-import modelo.Animal;
-import modelo.Pessoa;
+import modelo.Cliente;
 
-public class PessoaAnimalControl {
+public class ClienteControl {
 
-	private ArrayList<Pessoa> tabelaPessoa = new ArrayList<Pessoa>();
+	private ArrayList<Cliente> tabelaPessoa = new ArrayList<Cliente>();
 
-	private static PessoaAnimalControl ac = null;
+	private static ClienteControl ac = null;
 
-	public static PessoaAnimalControl getIntancia() {
+	public static ClienteControl getIntancia() {
 		if (ac == null) {
-			ac = new PessoaAnimalControl();
+			ac = new ClienteControl();
 		}
 		return ac;
 	}
-	private PessoaAnimalControl() {
-		// TODO Auto-generated constructor stub
+
+	public ClienteControl() {
+		
 	}
 
 	// INSERT
-	public boolean inserir(Pessoa p) {
+	public boolean inserir(Cliente p) {
 		this.tabelaPessoa.add(p);
 		return false;
 	}
 
 	// UPDATE
-	public boolean alterar(Pessoa p) {
+	public boolean alterar(Cliente p) {
 		return false;
 	}
 
 	// DELETE
-	public boolean deletar(Pessoa p) {
+	public boolean deletar(Cliente p) {
 		return false;
 	}
 
 	// SELECT
 	public void listaPessoas() {
-		for (Pessoa pp : tabelaPessoa) {
+		for (Cliente pp : tabelaPessoa) {
 			System.out.println(" Nome: " + pp.getNome() + " " + " Cpf" + pp.getCpf());
 
 		}
 	}
 
-	public Pessoa BuscarPessoa(String nome, String cpf) {
+	public Cliente BuscarPessoa(String nome, String cpf) {
 
-		for (Pessoa pp : tabelaPessoa) {
+		for (Cliente pp : tabelaPessoa) {
 			if (pp.getNome().equals(nome) && pp.getCpf().equals(cpf)) {
 				return pp;
 			}

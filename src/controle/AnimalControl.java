@@ -3,12 +3,10 @@ package controle;
 import java.util.ArrayList;
 
 import modelo.Animal;
-import modelo.Pessoa;
 
 public class AnimalControl {
 
-private ArrayList<Animal> tabela = new ArrayList<Animal>(); 
-
+	private ArrayList<Animal> tabela = new ArrayList<Animal>();
 
 	// INSERT
 	public boolean inserir(Animal animal) {
@@ -29,10 +27,9 @@ private ArrayList<Animal> tabela = new ArrayList<Animal>();
 	// SELECT
 	public void listaAnimal() {
 		for (Animal pp : tabela) {
-			System.out.println(" Nome: "+ pp.getNome()+ " "+" Cpf"+pp.getraca());
-		
-	}
-	}
-		
+			System.out.println(" Nome: " + pp.getNome() + " " + " Cpf" + pp.getraca());
+
+		}
 	}
 
+}
