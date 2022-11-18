@@ -86,8 +86,9 @@ public class TelaLogin extends JFrame {
 				String loginStr = txtLogin.getText();
 				String senhaStr = txtSenha.getText();
 
-				FuncionarioControl controle = new FuncionarioControl();
-				Funcionario funcionario = controle.buscar(loginStr, senhaStr);
+				FuncionarioControl controle = FuncionarioControl.getInstancia();
+				Funcionario funcionario = controle.efetuarLogin(loginStr, senhaStr);
+
 				if (funcionario != null) {
 					dispose();
 					TelaClinica telaClinica = new TelaClinica();
