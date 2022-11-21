@@ -172,6 +172,14 @@ public class TelaCadastroTutor extends JFrame {
 		contentPane.add(btnNewButton_1);
 
 		btnNewButton_2 = new JButton("Voltar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				TelaClinica telaClinica = new TelaClinica();
+				telaClinica.setLocationRelativeTo(null);
+				telaClinica.setVisible(true);
+			}
+		});
 		btnNewButton_2.setBounds(50, 277, 120, 23);
 		contentPane.add(btnNewButton_2);
 
