@@ -3,6 +3,7 @@ package visao;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -19,7 +20,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import controle.AnimalControl;
 import controle.TutorControl;
 import modelo.Animal;
 import modelo.Tutor;
@@ -34,8 +34,7 @@ public class TelaAnimal extends JFrame {
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField raca;
-	public TutorControl listPessoa = TutorControl.getIntancia();
-	public AnimalControl tabela;
+	public TutorControl listTutor = TutorControl.getIntancia();
 	private JLabel lblNewLabel;
 	private Tutor tutor;
 	private JLabel lblNewLabel_1;
@@ -48,8 +47,9 @@ public class TelaAnimal extends JFrame {
 
 	public TelaAnimal(Tutor tutor) {
 		this.tutor = tutor;
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 431);
+		setBounds(100, 100, 450, 483);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -57,7 +57,7 @@ public class TelaAnimal extends JFrame {
 		contentPane.setLayout(null);
 
 		nome = new JTextField();
-		nome.setBounds(108, 42, 204, 20);
+		nome.setBounds(108, 43, 204, 20);
 		contentPane.add(nome);
 		nome.setColumns(10);
 
@@ -83,15 +83,25 @@ public class TelaAnimal extends JFrame {
 					animalEscolhido.setRaca(racaSt);
 					animalEscolhido.setTipo(tipoSt);
 
-					tutor.getAnimais().add(animalEscolhido);
 				} else {
 					animalEscolhido.setNome(nomeSt);
 					animalEscolhido.setRaca(racaSt);
 					animalEscolhido.setTipo(tipoSt);
 				}
 
-				animalEscolhido = null;
-				btnNewButton.setText("Cadastrar");
+				// deu tudo certo
+				TutorControl tutorControl = TutorControl.getIntancia();
+
+				ArrayList<Animal> animaisTutor = tutor.getAnimais();
+				animaisTutor.add(animalEscolhido);
+				tutor.setAnimais(animaisTutor);
+				boolean valida = tutorControl.alterar(tutor, tutor.getCpf());
+
+				if (valida == true) {
+					JOptionPane.showMessageDialog(null, "Sucesso cadastro do animal");
+				} else {
+					JOptionPane.showMessageDialog(null, "Erro cadastro do animal");
+				}
 
 				atualiza();
 				nome.setText("");
@@ -105,7 +115,7 @@ public class TelaAnimal extends JFrame {
 		contentPane.add(btnNewButton);
 
 		cmbAnimal = new JComboBox<>();
-		cmbAnimal.setBounds(108, 11, 106, 20);
+		cmbAnimal.setBounds(109, 12, 106, 20);
 		contentPane.add(cmbAnimal);
 
 		lblNewLabel = new JLabel(" Tipos :");
@@ -152,7 +162,7 @@ public class TelaAnimal extends JFrame {
 			}
 
 		});
-		btnNewButton_1.setBounds(29, 359, 89, 23);
+		btnNewButton_1.setBounds(223, 352, 89, 23);
 		contentPane.add(btnNewButton_1);
 
 		btnExcluir = new JButton("-");
@@ -186,6 +196,19 @@ public class TelaAnimal extends JFrame {
 		});
 		btnNovo.setBounds(274, 108, 89, 23);
 		contentPane.add(btnNovo);
+
+		JLabel lblCad = new JLabel("Cadastrando animal de:");
+		lblCad.setBounds(29, 406, 186, 14);
+		contentPane.add(lblCad);
+
+		JLabel lblNomeTutor = new JLabel("");
+		lblNomeTutor.setBounds(166, 406, 46, 14);
+		contentPane.add(lblNomeTutor);
+
+		/**
+		 * Seta o nome do tutor
+		 */
+		lblNomeTutor.setText(tutor.getNome());
 
 		cmbAnimal.addItem("Cachorro");
 		cmbAnimal.addItem("Gato");

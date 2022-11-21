@@ -15,4 +15,6 @@ public class Tutor extends Pessoa {
 	public void setAnimais(ArrayList<Animal> animais) {
 		this.animais = animais;
 	}
+
 }
+

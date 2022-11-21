@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import controle.AnimalControl;
 import controle.TutorControl;
 import modelo.Tutor;
 
@@ -29,9 +28,7 @@ public class TelaCadastroTutor extends JFrame {
 
 	private JTextField cpf;
 
-	public TutorControl listPessoa = TutorControl.getIntancia();
-
-	public AnimalControl listAnimal;
+	public TutorControl bancoTutor;
 
 	private JTextField cep;
 
@@ -40,7 +37,6 @@ public class TelaCadastroTutor extends JFrame {
 	private JTextField rua;
 
 	private JLabel lblNewLabel_3;
-
 	private JTextField textField_2;
 
 	private JLabel numcasa;
@@ -55,6 +51,7 @@ public class TelaCadastroTutor extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroTutor() {
+		bancoTutor = TutorControl.getIntancia();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 240, 365);
 		contentPane = new JPanel();
@@ -139,11 +136,11 @@ public class TelaCadastroTutor extends JFrame {
 					novoTutor.setCpf(Long.valueOf(cpfTutorStr));
 				}
 
-				TutorControl tabelaTutor = new TutorControl();
-				boolean inserir = tabelaTutor.inserir(novoTutor);
+				boolean inserir = bancoTutor.inserir(novoTutor);
 
 				if (inserir == true) {
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+					tutor = novoTutor;
 
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
@@ -182,10 +179,10 @@ public class TelaCadastroTutor extends JFrame {
 		bnbInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				dispose();
 				TelaAnimal telaanimal = new TelaAnimal(tutor);
 				telaanimal.setLocationRelativeTo(null);
 				telaanimal.setVisible(true);
+				dispose();
 
 			}
 		});

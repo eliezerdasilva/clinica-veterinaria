@@ -18,8 +18,14 @@ public class TutorControl {
 		return ac;
 	}
 
-	public TutorControl() {
+	private TutorControl() {
 
+	}
+	public void listaTutor() {
+		for (Pessoa pp : tabelaTutores) {
+			System.out.println(" Nome: " + pp.getNome() + " " + " Cpf" + pp.getCpf());
+
+		}
 	}
 
 	// INSERT
@@ -61,8 +67,7 @@ public class TutorControl {
 	// SELECT
 	public ArrayList<Tutor> listaPessoas() {
 		return this.tabelaTutores;
+		
 	}
-
-	
 
 }
