@@ -63,6 +63,7 @@ public class TelaClinica extends JFrame {
 				TelaCadastroTutor telaCadastroTutor = new TelaCadastroTutor();
 				telaCadastroTutor.setLocationRelativeTo(null);
 				telaCadastroTutor.setVisible(true);
+				dispose();
 
 			}
 		});
