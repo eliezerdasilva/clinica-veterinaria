@@ -22,7 +22,6 @@ import javax.swing.event.ListSelectionListener;
 import controle.AnimalControl;
 import controle.TutorControl;
 import modelo.Animal;
-import modelo.Funcionario;
 import modelo.Tutor;
 
 public class TelaAnimal extends JFrame {
@@ -35,10 +34,10 @@ public class TelaAnimal extends JFrame {
 	private JPanel contentPane;
 	private JTextField nome;
 	private JTextField raca;
-	private Funcionario funcionario;
 	public TutorControl listPessoa = TutorControl.getIntancia();
-	public AnimalControl tabela = new AnimalControl();
+	public AnimalControl tabela;
 	private JLabel lblNewLabel;
+	private Tutor tutor;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JList<Animal> listAnimal;
@@ -47,8 +46,8 @@ public class TelaAnimal extends JFrame {
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
 
-	public TelaAnimal(Funcionario func) {
-		this.funcionario = func;
+	public TelaAnimal(Tutor tutor) {
+		this.tutor = tutor;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 431);
 		contentPane = new JPanel();
@@ -71,6 +70,7 @@ public class TelaAnimal extends JFrame {
 		btnNewButton.setIcon(new ImageIcon(
 				"C:\\Users\\Aluno\\Downloads\\clinica-veterinaria\\clinica-veterinaria\\img\\floppy-disk.png"));
 		btnNewButton.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 
 				String nomeSt = nome.getText();
@@ -83,7 +83,7 @@ public class TelaAnimal extends JFrame {
 					animalEscolhido.setRaca(racaSt);
 					animalEscolhido.setTipo(tipoSt);
 
-					pessoa.getAnimais().add(animalEscolhido);
+					tutor.getAnimais().add(animalEscolhido);
 				} else {
 					animalEscolhido.setNome(nomeSt);
 					animalEscolhido.setRaca(racaSt);
@@ -164,7 +164,7 @@ public class TelaAnimal extends JFrame {
 					int val = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + animalAtual.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
 					if (val == 0) {
-						pessoa.getAnimais().remove(animalAtual);
+						tutor.getAnimais().remove(animalAtual);
 						atualiza();
 					}
 
@@ -196,7 +196,7 @@ public class TelaAnimal extends JFrame {
 
 	public void atualiza() {
 
-		listAnimal.setListData(new Vector<Animal>(pessoa.getAnimais()));
+		listAnimal.setListData(new Vector<Animal>(tutor.getAnimais()));
 		listAnimal.updateUI();
 
 	}
@@ -216,6 +216,6 @@ public class TelaAnimal extends JFrame {
 	 */
 
 	public void tabela(Tutor p) {
-		pessoa = p;
+		tutor = p;
 	}
 }

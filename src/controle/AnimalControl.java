@@ -18,7 +18,7 @@ public class AnimalControl {
 		return ac;
 	}
 
-	public TutorControl() {
+	private AnimalControl() {
 
 	}
 
@@ -63,8 +63,4 @@ public class AnimalControl {
 		return this.tabelaTutores;
 	}
 
-	
-
 }
-
-
