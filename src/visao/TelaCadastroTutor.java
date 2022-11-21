@@ -1,7 +1,6 @@
 package visao;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +16,6 @@ import javax.swing.border.EmptyBorder;
 import controle.AnimalControl;
 import controle.TutorControl;
 import modelo.Tutor;
-import javax.swing.JTable;
 
 public class TelaCadastroTutor extends JFrame {
 
@@ -33,7 +31,7 @@ public class TelaCadastroTutor extends JFrame {
 
 	public TutorControl listPessoa = TutorControl.getIntancia();
 
-	public AnimalControl listAnimal = new AnimalControl();
+	public AnimalControl listAnimal;
 
 	private JTextField cep;
 
@@ -48,16 +46,17 @@ public class TelaCadastroTutor extends JFrame {
 	private JLabel numcasa;
 
 	private JLabel lblNewLabel_4;
-	private JTable table;
+	private JButton btnNewButton_2;
+	private JButton bnbInserir;
 
-	
+	private Tutor tutor;
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaCadastroTutor() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 668, 452);
+		setBounds(100, 100, 240, 365);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -145,10 +144,7 @@ public class TelaCadastroTutor extends JFrame {
 
 				if (inserir == true) {
 					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-					dispose();
-					TelaLogin telaLogin = new TelaLogin();
-					telaLogin.setLocationRelativeTo(null);
-					telaLogin.setVisible(true);
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
 				}
@@ -156,21 +152,45 @@ public class TelaCadastroTutor extends JFrame {
 			}
 
 		});
-		btnNewButton.setBounds(148, 194, 120, 23);
+		btnNewButton.setBounds(50, 196, 120, 23);
 		contentPane.add(btnNewButton);
 
 		lblNewLabel_4 = new JLabel("Cadastro Cliente");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_4.setForeground(new Color(0, 0, 0));
-		lblNewLabel_4.setBounds(237, 11, 180, 14);
+		lblNewLabel_4.setBounds(63, 11, 180, 14);
 		contentPane.add(lblNewLabel_4);
 
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 249, 399, 153);
-		contentPane.add(panel);
+		JButton btnNewButton_1 = new JButton("Voltar ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaClinica telaClinica = new TelaClinica();
+				telaClinica.setLocationRelativeTo(null);
+				telaClinica.setVisible(true);
+				dispose();
+			}
 
-		table = new JTable();
-		panel.add(table);
+		});
+		btnNewButton_1.setBounds(463, 379, 89, 23);
+		contentPane.add(btnNewButton_1);
+
+		btnNewButton_2 = new JButton("Voltar");
+		btnNewButton_2.setBounds(50, 277, 120, 23);
+		contentPane.add(btnNewButton_2);
+
+		bnbInserir = new JButton("Inserir animal");
+		bnbInserir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				dispose();
+				TelaAnimal telaanimal = new TelaAnimal(tutor);
+				telaanimal.setLocationRelativeTo(null);
+				telaanimal.setVisible(true);
+
+			}
+		});
+		bnbInserir.setBounds(48, 232, 122, 23);
+		contentPane.add(bnbInserir);
 
 	}
 }

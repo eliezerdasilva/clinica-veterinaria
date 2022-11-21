@@ -1,20 +1,26 @@
 package visao;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import modelo.Tutor;
 
 public class TelaClinica extends JFrame {
 
 	private JPanel contentPane;
-
+	private JList<Tutor> listTutor;
+	private Tutor TutorEscolhido = null;
 
 	/**
 	 * Create the frame.
@@ -27,29 +33,66 @@ public class TelaClinica extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("GERENCIAMENTO DE CADASTROS");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 22));
 		lblNewLabel.setBounds(38, 39, 386, 31);
 		contentPane.add(lblNewLabel);
-		
+
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(38, 105, 258, 122);
 		contentPane.add(scrollPane_1);
-		
+
 		JList list = new JList();
 		scrollPane_1.setViewportView(list);
-		
-		JButton btnNewButton = new JButton("CADASTRAR");
-		btnNewButton.setBounds(306, 126, 118, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("DELETAR");
-		btnNewButton_1.setBounds(306, 163, 118, 23);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_2 = new JButton("EXIT");
-		btnNewButton_2.setBounds(306, 204, 118, 23);
-		contentPane.add(btnNewButton_2);
+
+		listTutor = new JList<Tutor>();
+		listTutor.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				TutorEscolhido = listTutor.getSelectedValue();
+				if (TutorEscolhido != null) {
+
+					System.out.println(TutorEscolhido);
+				}
+			}
+		});
+
+		JButton btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroTutor telaCadastroTutor = new TelaCadastroTutor();
+				telaCadastroTutor.setLocationRelativeTo(null);
+				telaCadastroTutor.setVisible(true);
+
+			}
+		});
+		btnCadastrar.setBounds(306, 103, 118, 23);
+		contentPane.add(btnCadastrar);
+
+		JButton btnExcluir = new JButton("DELETAR");
+		btnExcluir.setBounds(306, 163, 118, 23);
+		contentPane.add(btnExcluir);
+
+		JButton btnSair = new JButton("EXIT");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaLogin telaLogin = new TelaLogin();
+				telaLogin.setLocationRelativeTo(null);
+				telaLogin.setVisible(true);
+				dispose();
+
+			}
+		});
+		btnSair.setBounds(306, 204, 118, 23);
+		contentPane.add(btnSair);
+
+		JButton btnAlterar = new JButton("ALTERAR");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		btnAlterar.setBounds(306, 137, 118, 23);
+		contentPane.add(btnAlterar);
 	}
 }
