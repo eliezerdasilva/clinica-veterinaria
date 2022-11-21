@@ -7,13 +7,15 @@ import modelo.Tutor;
 
 public class TutorControl {
 
-	private ArrayList<Tutor> tabelaTutores = new ArrayList<Tutor>();
+	private static ArrayList<Tutor> tabelaTutores;
 
 	private static TutorControl ac = null;
 
 	public static TutorControl getIntancia() {
 		if (ac == null) {
 			ac = new TutorControl();
+			tabelaTutores = new ArrayList<Tutor>();
+
 		}
 		return ac;
 	}
@@ -21,6 +23,7 @@ public class TutorControl {
 	private TutorControl() {
 
 	}
+
 	public void listaTutor() {
 		for (Pessoa pp : tabelaTutores) {
 			System.out.println(" Nome: " + pp.getNome() + " " + " Cpf" + pp.getCpf());
@@ -67,7 +70,7 @@ public class TutorControl {
 	// SELECT
 	public ArrayList<Tutor> listaPessoas() {
 		return this.tabelaTutores;
-		
+
 	}
 
 }

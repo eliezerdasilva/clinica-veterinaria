@@ -95,6 +95,7 @@ public class TelaAnimal extends JFrame {
 				ArrayList<Animal> animaisTutor = tutor.getAnimais();
 				animaisTutor.add(animalEscolhido);
 				tutor.setAnimais(animaisTutor);
+
 				boolean valida = tutorControl.alterar(tutor, tutor.getCpf());
 
 				if (valida == true) {
@@ -102,6 +103,11 @@ public class TelaAnimal extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Erro cadastro do animal");
 				}
+
+//				dispose();
+//				TelaClinica telaClinica = new TelaClinica();
+//				telaClinica.setLocationRelativeTo(null);
+//				telaClinica.setVisible(true);
 
 				atualiza();
 				nome.setText("");
@@ -137,6 +143,8 @@ public class TelaAnimal extends JFrame {
 		scrollPane.setBounds(29, 148, 283, 194);
 		contentPane.add(scrollPane);
 
+		// mostra animais cadastrados na tabela
+
 		listAnimal = new JList<Animal>();
 		listAnimal.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
@@ -156,9 +164,10 @@ public class TelaAnimal extends JFrame {
 		btnNewButton_1 = new JButton("Exit");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaLogin exit = new TelaLogin();
-				dispose();
+				TelaClinica exit = new TelaClinica();
 				exit.setVisible(true);
+				dispose();
+
 			}
 
 		});
@@ -241,4 +250,5 @@ public class TelaAnimal extends JFrame {
 	public void tabela(Tutor p) {
 		tutor = p;
 	}
+
 }

@@ -20,6 +20,8 @@ public class FuncionarioControl {
 		if (instancia == null) {
 			instancia = new FuncionarioControl();
 			tabelaFuncionarios = new ArrayList<Funcionario>();
+
+			tabelaFuncionarios.add(new Funcionario("admin", "admin"));
 		}
 
 		return instancia;

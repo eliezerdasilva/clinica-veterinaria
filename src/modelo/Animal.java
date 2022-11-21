@@ -42,6 +42,7 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return tipo + " - " + nome + "(" + raca + ")";
+		return " Animal " + " Tipo: " + tipo + "---- " +"Nome: " + nome + "Raça"+  raca ;
 	}
+
 }

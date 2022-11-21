@@ -4,6 +4,13 @@ public class Funcionario extends Pessoa {
 
 	private String login;
 	private String senha;
+	
+	public Funcionario() {}
+
+	public Funcionario(String login, String senha) {
+		this.login = login;
+		this.senha = senha;
+	}
 
 	public String getLogin() {
 		return login;
@@ -20,9 +27,10 @@ public class Funcionario extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-public String toString() {
-		
-		return login +" - "+ senha ;
+
+	public String toString() {
+
+		return login + " - " + senha;
 	}
 
 }
