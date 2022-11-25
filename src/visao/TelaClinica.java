@@ -25,8 +25,9 @@ public class TelaClinica extends JFrame {
 	private JPanel contentPane;
 	private JList<Tutor> listTutor;
 	private Tutor TutorEscolhido = null;
-	
+
 	TutorControl controlBD;
+
 	/**
 	 * Create the frame.
 	 */
@@ -87,7 +88,7 @@ public class TelaClinica extends JFrame {
 					int val = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + tutorAtual.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
 					if (val == 0) {
-					
+
 						boolean valida = controlBD.deletar(tutorAtual, tutorAtual.getCpf());
 
 						if (valida == true) {
@@ -125,16 +126,45 @@ public class TelaClinica extends JFrame {
 		JButton btnAlterar = new JButton("ALTERAR");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Tutor tutorAtual = listTutor.getSelectedValue();
+				if (tutorAtual != null) {
+					int val = JOptionPane.showConfirmDialog(null, "Deseja alterar o animal " + tutorAtual.getNome(),
+							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
+					if (val == 0) {
+						
+						// pegar os dados dos campos de texto
+						
+						
+						// setar os novos dados no obj tutor
+						tutorAtual.setNome(getName());
+						tutorAtual.setCpf(null);
+						tutorAtual.setAnimais(null);
+						
+						boolean valida = controlBD.alterar(tutorAtual, tutorAtual.getCpf());
 
+						if (valida == true) {
+							JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+
+							// ATUALIZAR O JTABLE
+							TutorControl controlBD = TutorControl.getIntancia();
+							atualiza();
+						} else {
+							JOptionPane.showMessageDialog(null, "Erro ao alterar!");
+						}
+
+					}
+
+				}
 			}
 		});
 		btnAlterar.setBounds(306, 137, 118, 23);
 		contentPane.add(btnAlterar);
 
 	}
+
 	public void atualiza() {
-	listTutor.setListData(new Vector<Tutor>(controlBD.listaPessoas()));
-	listTutor.updateUI();
+		listTutor.setListData(new Vector<Tutor>(controlBD.listaPessoas()));
+		listTutor.updateUI();
 	}
 
 }
