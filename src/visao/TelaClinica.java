@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
@@ -16,7 +17,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controle.TutorControl;
-import modelo.Animal;
 import modelo.Tutor;
 
 public class TelaClinica extends JFrame {
@@ -50,7 +50,7 @@ public class TelaClinica extends JFrame {
 		JList<Tutor> list = new JList<>();
 		list.setListData(new Vector<Tutor>(tutorControl.listaPessoas()));
 		list.updateUI();
-		
+
 		scrollPane_1.setViewportView(list);
 
 		listTutor = new JList<Tutor>();
@@ -78,6 +78,22 @@ public class TelaClinica extends JFrame {
 		contentPane.add(btnCadastrar);
 
 		JButton btnExcluir = new JButton("DELETAR");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Tutor tutorAtual = listTutor.getSelectedValue();
+				if (tutorAtual != null) {
+					int val = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + tutorAtual.getNome(),
+							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
+					if (val == 0) {
+						TutorControl controlBD = TutorControl.getIntancia();
+						controlBD.deletar(tutorAtual, tutorAtual.getCpf());
+					}
+
+				}
+			}
+
+		});
 		btnExcluir.setBounds(306, 163, 118, 23);
 		contentPane.add(btnExcluir);
 
