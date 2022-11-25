@@ -45,6 +45,7 @@ public class TelaAnimal extends JFrame {
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
 
+
 	public TelaAnimal(Tutor tutor) {
 		this.tutor = tutor;
 
