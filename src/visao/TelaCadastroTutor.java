@@ -45,7 +45,8 @@ public class TelaCadastroTutor extends JFrame {
 	private JButton btnNewButton_2;
 	private JButton bnbInserir;
 
-	private Tutor tutor;
+	Tutor tutor;
+	TutorControl tutorControl;
 
 	/**
 	 * Create the frame.

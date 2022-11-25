@@ -55,7 +55,7 @@ public class TutorControl {
 	}
 
 	// DELETE
-	public boolean deletar(Pessoa p, Long cpfPessoa) {
+	public boolean deletar(Tutor p, Long cpfPessoa ) {
 
 		for (Tutor tutor : tabelaTutores) {
 			if (tutor.getCpf() == cpfPessoa) {

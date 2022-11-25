@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.FuncionarioControl;
+import controle.TutorControl;
 import modelo.Funcionario;
 
 public class TelaLogin extends JFrame {
@@ -25,6 +26,7 @@ public class TelaLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtLogin;
+	TutorControl tutor;
 	private JTextField txtSenha;
 
 	/**

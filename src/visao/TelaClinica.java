@@ -17,6 +17,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controle.TutorControl;
+import modelo.Animal;
 import modelo.Tutor;
 
 public class TelaClinica extends JFrame {
@@ -24,7 +25,8 @@ public class TelaClinica extends JFrame {
 	private JPanel contentPane;
 	private JList<Tutor> listTutor;
 	private Tutor TutorEscolhido = null;
-
+	
+	TutorControl controlBD;
 	/**
 	 * Create the frame.
 	 */
@@ -58,7 +60,6 @@ public class TelaClinica extends JFrame {
 			public void valueChanged(ListSelectionEvent e) {
 				TutorEscolhido = listTutor.getSelectedValue();
 				if (TutorEscolhido != null) {
-
 					System.out.println(TutorEscolhido);
 				}
 			}
@@ -86,8 +87,19 @@ public class TelaClinica extends JFrame {
 					int val = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + tutorAtual.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
 					if (val == 0) {
-						TutorControl controlBD = TutorControl.getIntancia();
-						controlBD.deletar(tutorAtual, tutorAtual.getCpf());
+					
+						boolean valida = controlBD.deletar(tutorAtual, tutorAtual.getCpf());
+
+						if (valida == true) {
+							JOptionPane.showMessageDialog(null, "Removido com sucesso!");
+
+							// ATUALIZAR O JTABLE
+							TutorControl controlBD = TutorControl.getIntancia();
+							atualiza();
+						} else {
+							JOptionPane.showMessageDialog(null, "Erro ao remover!");
+						}
+
 					}
 
 				}
@@ -119,6 +131,10 @@ public class TelaClinica extends JFrame {
 		btnAlterar.setBounds(306, 137, 118, 23);
 		contentPane.add(btnAlterar);
 
+	}
+	public void atualiza() {
+	listTutor.setListData(new Vector<Tutor>(controlBD.listaPessoas()));
+	listTutor.updateUI();
 	}
 
 }
