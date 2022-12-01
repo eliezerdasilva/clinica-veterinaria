@@ -23,8 +23,8 @@ import modelo.Tutor;
 public class TelaClinica extends JFrame {
 
 	private JPanel contentPane;
-	private JList<Tutor> listTutor;
-	private Tutor TutorEscolhido = null;
+	private JList<Tutor> listaTutoresJList;
+	private Tutor TutorEscolhido;
 
 	TutorControl controlBD;
 
@@ -50,26 +50,23 @@ public class TelaClinica extends JFrame {
 		contentPane.add(scrollPane_1);
 
 		TutorControl tutorControl = TutorControl.getIntancia();
-		JList<Tutor> list = new JList<>();
-		list.setListData(new Vector<Tutor>(tutorControl.listaPessoas()));
-		list.updateUI();
-
-		scrollPane_1.setViewportView(list);
-
-		listTutor = new JList<Tutor>();
-		listTutor.addListSelectionListener(new ListSelectionListener() {
+		JList<Tutor> listaTutoresJList = new JList<>();
+		listaTutoresJList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				TutorEscolhido = listTutor.getSelectedValue();
+				TutorEscolhido = listaTutoresJList.getSelectedValue();
 				if (TutorEscolhido != null) {
 					System.out.println(TutorEscolhido);
 				}
 			}
 		});
+		listaTutoresJList.setListData(new Vector<Tutor>(tutorControl.listaPessoas()));
+		listaTutoresJList.updateUI();
+		scrollPane_1.setViewportView(listaTutoresJList);
 
 		JButton btnCadastrar = new JButton("CADASTRAR");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaCadastroTutor telaCadastroTutor = new TelaCadastroTutor();
+				TelaCadastroTutor telaCadastroTutor = new TelaCadastroTutor(null);
 				telaCadastroTutor.setLocationRelativeTo(null);
 				telaCadastroTutor.setVisible(true);
 				dispose();
@@ -83,7 +80,7 @@ public class TelaClinica extends JFrame {
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Tutor tutorAtual = listTutor.getSelectedValue();
+				Tutor tutorAtual = listaTutoresJList.getSelectedValue();
 				if (tutorAtual != null) {
 					int val = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + tutorAtual.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
@@ -96,6 +93,7 @@ public class TelaClinica extends JFrame {
 
 							// ATUALIZAR O JTABLE
 							TutorControl controlBD = TutorControl.getIntancia();
+
 							atualiza();
 						} else {
 							JOptionPane.showMessageDialog(null, "Erro ao remover!");
@@ -126,31 +124,16 @@ public class TelaClinica extends JFrame {
 		JButton btnAlterar = new JButton("ALTERAR");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Tutor tutorAtual = listTutor.getSelectedValue();
+				Tutor tutorAtual = listaTutoresJList.getSelectedValue();
 				if (tutorAtual != null) {
 					int val = JOptionPane.showConfirmDialog(null, "Deseja alterar o animal " + tutorAtual.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
 					if (val == 0) {
-						
+
 						// pegar os dados dos campos de texto
-						
-						
-						// setar os novos dados no obj tutor
-						tutorAtual.setNome(getName());
-						tutorAtual.setCpf(null);
-						tutorAtual.setAnimais(null);
-						
-						boolean valida = controlBD.alterar(tutorAtual, tutorAtual.getCpf());
-
-						if (valida == true) {
-							JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-
-							// ATUALIZAR O JTABLE
-							TutorControl controlBD = TutorControl.getIntancia();
-							atualiza();
-						} else {
-							JOptionPane.showMessageDialog(null, "Erro ao alterar!");
-						}
+						dispose();
+						TelaCadastroTutor telaCadTutor = new TelaCadastroTutor(tutorAtual);
+						telaCadTutor.setVisible(true);
 
 					}
 
@@ -163,8 +146,8 @@ public class TelaClinica extends JFrame {
 	}
 
 	public void atualiza() {
-		listTutor.setListData(new Vector<Tutor>(controlBD.listaPessoas()));
-		listTutor.updateUI();
+		listaTutoresJList.setListData(new Vector<Tutor>(controlBD.listaPessoas()));
+		listaTutoresJList.updateUI();
 	}
 
 }
