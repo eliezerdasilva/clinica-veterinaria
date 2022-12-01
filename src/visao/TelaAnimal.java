@@ -143,6 +143,7 @@ public class TelaAnimal extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(29, 148, 283, 194);
 		contentPane.add(scrollPane);
+		scrollPane.setViewportView(listAnimal);
 
 		// mostra animais cadastrados na tabela
 
@@ -160,8 +161,7 @@ public class TelaAnimal extends JFrame {
 			}
 		});
 
-		scrollPane.setViewportView(listAnimal);
-
+		
 		btnNewButton_1 = new JButton("Exit");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
