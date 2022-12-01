@@ -204,6 +204,12 @@ public class TelaCadastroTutor extends JFrame {
 		if (tutorAEditar != null) {
 
 			txtnome.setText(tutorAEditar.getNome());
+			txtcpf.setText(tutorAEditar.getCpf());
+		
+			
+			
+			
+			
 			lblTituloTutor.setText("Atualizar tutor");
 			btnCadastrarTutor.setText("Atualizar");
 
