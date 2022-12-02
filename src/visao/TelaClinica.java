@@ -32,6 +32,7 @@ public class TelaClinica extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaClinica() {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -50,7 +51,7 @@ public class TelaClinica extends JFrame {
 		contentPane.add(scrollPane_1);
 
 		TutorControl tutorControl = TutorControl.getIntancia();
-		JList<Tutor> listaTutoresJList = new JList<>();
+		listaTutoresJList = new JList<>();
 		listaTutoresJList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				TutorEscolhido = listaTutoresJList.getSelectedValue();
@@ -93,7 +94,6 @@ public class TelaClinica extends JFrame {
 
 							// ATUALIZAR O JTABLE
 							TutorControl controlBD = TutorControl.getIntancia();
-
 							atualiza();
 						} else {
 							JOptionPane.showMessageDialog(null, "Erro ao remover!");
