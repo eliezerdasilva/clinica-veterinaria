@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -117,9 +118,18 @@ public class TelaCadastroTutor extends JFrame {
 
 				if (tutorAEditar != null) {
 					// EDITAR
-
 					TutorControl control = TutorControl.getIntancia();
-					control.alterar(tutorEdit, tutorEdit.getCpf());
+					boolean valida = control.alterar(tutorEdit, tutorEdit.getCpf());
+
+					if (valida == true) {
+
+						// mensagem sucesso
+						dispose();
+						TelaClinica tC = new TelaClinica();
+						tC.setVisible(true);
+					} else {
+						// mensagem erro
+					}
 
 				} else {
 					// CADASTRAR
@@ -204,12 +214,8 @@ public class TelaCadastroTutor extends JFrame {
 		if (tutorAEditar != null) {
 
 			txtnome.setText(tutorAEditar.getNome());
-			txtcpf.setText(tutorAEditar.getCpf());
-		
-			
-			
-			
-			
+			txtcpf.setText(String.valueOf(tutorAEditar.getCpf()));
+
 			lblTituloTutor.setText("Atualizar tutor");
 			btnCadastrarTutor.setText("Atualizar");
 
