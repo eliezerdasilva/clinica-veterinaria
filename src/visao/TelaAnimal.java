@@ -45,6 +45,10 @@ public class TelaAnimal extends JFrame {
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 	public TelaAnimal(Tutor tutor) {
 		this.tutor = tutor;
 
@@ -160,6 +164,10 @@ public class TelaAnimal extends JFrame {
 			}
 		});
 
+<<<<<<< HEAD
+=======
+		
+>>>>>>> main
 		btnNewButton_1 = new JButton("Exit");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
