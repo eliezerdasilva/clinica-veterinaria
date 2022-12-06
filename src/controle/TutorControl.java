@@ -9,32 +9,26 @@ public class TutorControl {
 
 	private static ArrayList<Tutor> tabelaTutores;
 
-	private static TutorControl ac = null;
+	private static TutorControl tutorControl;
 
 	public static TutorControl getIntancia() {
-		if (ac == null) {
-			ac = new TutorControl();
+		if (tutorControl == null) {
+			tutorControl = new TutorControl();
 			tabelaTutores = new ArrayList<Tutor>();
-
 		}
-		return ac;
-	}
-
-	private TutorControl() {
-
+		return tutorControl;
 	}
 
 	public void listaTutor() {
-		for (Pessoa pp : tabelaTutores) {
-			System.out.println(" Nome: " + pp.getNome() + " " + " Cpf" + pp.getCpf());
-
+		for (Pessoa pessoa : tabelaTutores) {
+			System.out.println(" Nome: " + pessoa.getNome() + " " + " Cpf" + pessoa.getCpf());
 		}
 	}
 
 	// INSERT
-	public boolean inserir(Tutor p) {
-		if (p != null) {
-			this.tabelaTutores.add(p);
+	public boolean inserir(Tutor tutor) {
+		if (tutor != null) {
+			TutorControl.tabelaTutores.add(tutor);
 			return true;
 		}
 		return false;
@@ -43,7 +37,6 @@ public class TutorControl {
 	// UPDATE
 	public boolean alterar(Tutor p, Long cpfPessoa) {
 		for (Tutor tutor : tabelaTutores) {
-
 			if (tutor.getCpf() == cpfPessoa) {
 				tutor.setNome(p.getNome());
 				tutor.setCpf(p.getCpf());
@@ -55,22 +48,20 @@ public class TutorControl {
 	}
 
 	// DELETE
-	public boolean deletar(Tutor p, Long cpfPessoa ) {
-
+	public boolean deletar(Long cpfPessoa ) {
 		for (Tutor tutor : tabelaTutores) {
 			if (tutor.getCpf() == cpfPessoa) {
 				tabelaTutores.remove(tutor);
 				return true;
 			}
 		}
-
 		return false;
 	}
 
 	// SELECT
 	public ArrayList<Tutor> listaPessoas() {
-		return this.tabelaTutores;
-
+		System.out.println(TutorControl.tabelaTutores);
+		return TutorControl.tabelaTutores;
 	}
 
 }

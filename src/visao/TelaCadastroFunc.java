@@ -1,6 +1,5 @@
 package visao;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import controle.FuncionarioControl;
-import controle.TutorControl;
 import modelo.Funcionario;
 
 public class TelaCadastroFunc extends JFrame {

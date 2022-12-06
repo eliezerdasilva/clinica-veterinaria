@@ -16,34 +16,28 @@ public class FuncionarioControl {
 	 * @return
 	 */
 	public static FuncionarioControl getInstancia() {
-
 		if (instancia == null) {
 			instancia = new FuncionarioControl();
 			tabelaFuncionarios = new ArrayList<Funcionario>();
 
 			tabelaFuncionarios.add(new Funcionario("admin", "admin"));
 		}
-
 		return instancia;
-
 	}
 
-	private FuncionarioControl() {
-	}
 
 	public Funcionario buscar(String login, String senha) {
-
-		for (Funcionario func : tabelaFuncionarios) {
-			if (func.getLogin().equals(login) && func.getSenha().equals(senha)) {
-				return func;
+		for (Funcionario funcionario : tabelaFuncionarios) {
+			if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
+				return funcionario;
 			}
 		}
 		return null;
 	}
 
-	public boolean inserir(Funcionario p) {
-		if (p != null) {
-			this.tabelaFuncionarios.add(p);
+	public boolean inserir(Funcionario funcionario) {
+		if (funcionario != null) {
+			FuncionarioControl.tabelaFuncionarios.add(funcionario);
 			return true;
 		}
 		return false;
@@ -70,17 +64,15 @@ public class FuncionarioControl {
 	 */
 	// SELECT
 	public ArrayList<Funcionario> listaFuncionario() {
-		return this.tabelaFuncionarios;
+		return FuncionarioControl.tabelaFuncionarios;
 	}
 
 	public Funcionario efetuarLogin(String login, String senha) {
-
-		for (Funcionario pp : tabelaFuncionarios) {
-			if (pp.getLogin().equals(login) && pp.getSenha().equals(senha)) {
-				return pp;
+		for (Funcionario funcionario : tabelaFuncionarios) {
+			if (funcionario.getLogin().equals(login) && funcionario.getSenha().equals(senha)) {
+				return funcionario;
 			}
-		}
-		System.out.println(" Usuario nao cadastrado");
+		}		
 		return null;
 	}
 

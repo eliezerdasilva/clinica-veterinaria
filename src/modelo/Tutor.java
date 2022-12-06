@@ -18,5 +18,4 @@ public class Tutor extends Pessoa {
 	public String toString() {
 		return " Tutor"+" Nome : " + getNome ()+" CPF : "+getCpf()+"  Animais "+getAnimais();
 	}
-
 }
