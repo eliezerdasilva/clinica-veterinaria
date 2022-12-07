@@ -71,6 +71,7 @@ public class TelaCadastroTutor extends JFrame {
 		txtcpf.setColumns(10);
 
 		JButton btnCadastrarTutor = new JButton("CADASTRAR");
+		
 		btnCadastrarTutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					

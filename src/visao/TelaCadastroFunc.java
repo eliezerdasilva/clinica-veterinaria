@@ -57,6 +57,7 @@ public class TelaCadastroFunc extends JFrame {
 		txtSenha.setColumns(10);
 
 		JButton btnNewButton = new JButton("Cadastrar");
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
