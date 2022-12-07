@@ -27,17 +27,14 @@ public class TutorControl {
 	}
 
 	// UPDATE
-	public boolean alterar(Tutor tutorSelecionado) {		
+	public boolean alterar(Tutor tutorSelecionado, Long cpf) {		
 		for (Tutor tutor : listaPessoas()) {
-			if (tutor.equals(tutorSelecionado)) {
+			if (tutor.getCpf() == cpf) {
 				tutor.setNome(tutorSelecionado.getNome());
-				tutor.setCpf(tutorSelecionado.getCpf());
 				tutor.setAnimais(tutorSelecionado.getAnimais());				
 				return true;
 			}
-			System.out.println("ate qui foi 2");
 		}
-		System.out.println("ate qui foi 3");
 		return false;
 	}
 
