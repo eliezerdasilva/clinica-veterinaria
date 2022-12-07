@@ -28,7 +28,7 @@ public class TelaCadastroTutor extends JFrame {
 
 	private JTextField txtnome;
 
-	private JTextField txtcpf;
+	private JTextField txtCpf;
 
 	public TutorControl bancoTutor;
 
@@ -69,19 +69,24 @@ public class TelaCadastroTutor extends JFrame {
 		lblNewLabel_1.setBounds(20, 105, 46, 14);
 		contentPane.add(lblNewLabel_1);
 
-		txtcpf = new JTextField();
-		txtcpf.setBackground(new Color(192, 192, 192));
-		txtcpf.setBounds(63, 105, 119, 20);
-		contentPane.add(txtcpf);
-		txtcpf.setColumns(10);
+		txtCpf = new JTextField();
+		txtCpf.setBackground(new Color(192, 192, 192));
+		txtCpf.setBounds(63, 105, 119, 20);
+		contentPane.add(txtCpf);
+		txtCpf.setColumns(10);
 
 		JButton btnCadastrarTutor = new JButton("CADASTRAR");
+
+		if (tutorEdit != null) {
+			txtCpf.setEditable(false);
+			txtCpf.setEnabled(false);
+		}
 
 		btnCadastrarTutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				String nomeTutorStr = txtnome.getText();
-				String cpfTutorStr = txtcpf.getText();
+				String cpfTutorStr = txtCpf.getText();
 
 				Tutor novoTutor = new Tutor();
 
@@ -97,15 +102,17 @@ public class TelaCadastroTutor extends JFrame {
 					novoTutor.setCpf(Long.valueOf(cpfTutorStr));
 				}
 
-				
 				if (tutorEdit != null) {
-					// txtcpf.dis
-					
+
 					boolean valida = bancoTutor.alterar(novoTutor, tutorEdit.getCpf());
 					if (valida == true) {
 						try {
 							JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
 							tutor = novoTutor;
+							dispose();
+							TelaClinica tC = new TelaClinica();
+							tC.setLocationRelativeTo(null);
+							tC.setVisible(true);
 						} catch (Exception e2) {
 							System.out.println(e2);
 							JOptionPane.showMessageDialog(null, "Erro ao Alterar!");
@@ -178,7 +185,7 @@ public class TelaCadastroTutor extends JFrame {
 		});
 		bnbInserir.setBounds(50, 189, 132, 23);
 		contentPane.add(bnbInserir);
-		
+
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-contatos-24.png"));
 		lblNewLabel_2.setBounds(182, 22, 46, 24);
@@ -186,7 +193,7 @@ public class TelaCadastroTutor extends JFrame {
 
 		if (tutorEdit != null) {
 			txtnome.setText(tutorEdit.getNome());
-			txtcpf.setText(String.valueOf(tutorEdit.getCpf()));
+			txtCpf.setText(String.valueOf(tutorEdit.getCpf()));
 
 			lblTituloTutor.setText("Atualizar tutor");
 			btnCadastrarTutor.setText("Atualizar");

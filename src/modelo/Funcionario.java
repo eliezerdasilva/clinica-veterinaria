@@ -4,8 +4,9 @@ public class Funcionario extends Pessoa {
 
 	private String login;
 	private String senha;
-	
-	public Funcionario() {}
+
+	public Funcionario() {
+	}
 
 	public Funcionario(String login, String senha) {
 		this.login = login;

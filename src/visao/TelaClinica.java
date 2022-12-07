@@ -17,6 +17,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import controle.TutorControl;
+import modelo.Animal;
 import modelo.Tutor;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -95,7 +96,10 @@ public class TelaClinica extends JFrame {
 							boolean valida = tutorControl.deletar(TutorEscolhido.getCpf());
 							if (valida) {
 								JOptionPane.showMessageDialog(null, "Removido com sucesso!");
-								scrollPane_1.updateUI();
+
+								// atualizar o jlist
+								listaTutoresJList.setListData(new Vector<Tutor>(tutorControl.listaPessoas()));
+								listaTutoresJList.updateUI();
 							} else {
 								JOptionPane.showMessageDialog(null, "ERRO AO REMOVER!");
 							}

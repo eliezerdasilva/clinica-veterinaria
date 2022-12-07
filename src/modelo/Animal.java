@@ -2,6 +2,7 @@ package modelo;
 
 public class Animal {
 
+	private Long id;
 	private String tipo;
 	private String nome;
 	private String raca;
@@ -13,7 +14,18 @@ public class Animal {
 	}
 
 	public Animal() {
+	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getRaca() {
+		return raca;
 	}
 
 	public void setTipo(String tipo) {
@@ -42,7 +54,7 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return " Animal ; " + " Tipo : " + tipo + "---- " +"Nome: " + nome + "  Raça : "+  raca ;
+		return " Animal ; " + " Tipo : " + tipo + "---- " + "Nome: " + nome + "  Raça : " + raca;
 	}
 
 }
