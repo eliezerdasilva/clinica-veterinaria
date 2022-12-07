@@ -139,10 +139,7 @@ public class TelaAnimal extends JFrame {
 		lblNewLabel_2.setBounds(29, 74, 46, 14);
 		contentPane.add(lblNewLabel_2);
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 148, 283, 194);
-		contentPane.add(scrollPane);
-		scrollPane.setViewportView(listAnimal);
+		
 
 		// mostra animais cadastrados na tabela
 
@@ -221,7 +218,12 @@ public class TelaAnimal extends JFrame {
 		cmbAnimal.addItem("Cachorro");
 		cmbAnimal.addItem("Gato");
 		cmbAnimal.addItem("Outros");
-
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(29, 148, 283, 194);
+		contentPane.add(scrollPane);
+		scrollPane.setViewportView(listAnimal);
+		
 		atualiza();
 	}
 
