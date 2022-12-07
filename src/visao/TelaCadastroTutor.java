@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,31 +16,24 @@ import javax.swing.border.EmptyBorder;
 
 import controle.TutorControl;
 import modelo.Tutor;
-import javax.swing.ImageIcon;
 
 public class TelaCadastroTutor extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
 	protected static final TelaCadastroTutor TelaAnimal = null;
-
 	private JPanel contentPane;
-
 	private JTextField txtnome;
-
 	private JTextField txtCpf;
-
 	public TutorControl bancoTutor;
-
 	private JLabel lblTituloTutor;
 	private JButton btnNewButton_2;
 	private JButton bnbInserir;
-
-	Tutor tutor;
-	TutorControl tutorControl;
+	private Tutor tutor;
 	private JLabel lblNewLabel_2;
 
 	public TelaCadastroTutor(Tutor tutorEdit) {
+
+		this.tutor = tutorEdit;
 
 		bancoTutor = TutorControl.getIntancia();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

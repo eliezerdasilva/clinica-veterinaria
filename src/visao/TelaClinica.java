@@ -147,6 +147,8 @@ public class TelaClinica extends JFrame {
 
 					}
 
+				} else {
+					JOptionPane.showMessageDialog(null, "Nenhum tutor selecionado!");
 				}
 			}
 		});

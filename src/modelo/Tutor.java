@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Tutor extends Pessoa {
 
-	public ArrayList<Animal> animais;
+	private ArrayList<Animal> animais;
 
 	public ArrayList<Animal> getAnimais() {
 		return animais;

@@ -93,6 +93,9 @@ public class TelaAnimal extends JFrame {
 				TutorControl tutorControl = TutorControl.getIntancia();
 
 				ArrayList<Animal> animaisTutor = tutor.getAnimais();
+				if (animaisTutor == null) {
+					animaisTutor = new ArrayList<>();
+				}
 				animaisTutor.add(animalEscolhido);
 				tutor.setAnimais(animaisTutor);
 
@@ -138,8 +141,6 @@ public class TelaAnimal extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel_2.setBounds(29, 74, 46, 14);
 		contentPane.add(lblNewLabel_2);
-
-		
 
 		// mostra animais cadastrados na tabela
 
@@ -218,18 +219,24 @@ public class TelaAnimal extends JFrame {
 		cmbAnimal.addItem("Cachorro");
 		cmbAnimal.addItem("Gato");
 		cmbAnimal.addItem("Outros");
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(29, 148, 283, 194);
 		contentPane.add(scrollPane);
 		scrollPane.setViewportView(listAnimal);
-		
+
 		atualiza();
 	}
 
 	public void atualiza() {
 
-		listAnimal.setListData(new Vector<Animal>(tutor.getAnimais()));
+		ArrayList<Animal> animais = tutor.getAnimais();
+		if (animais == null) {
+			animais = new ArrayList<>();
+		}
+
+		Vector<Animal> listData = new Vector<Animal>(animais);
+		listAnimal.setListData(listData);
 		listAnimal.updateUI();
 
 	}
