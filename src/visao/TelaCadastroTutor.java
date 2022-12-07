@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -44,13 +45,11 @@ public class TelaCadastroTutor extends JFrame {
 	private JLabel lblTituloTutor;
 	private JButton btnNewButton_2;
 	private JButton bnbInserir;
-	private Tutor tutorAEditar;
 
 	Tutor tutor;
 	TutorControl tutorControl;
 
-	public TelaCadastroTutor(Tutor tutorEdit) {
-		this.tutorAEditar = tutorEdit;
+	public TelaCadastroTutor(Tutor tutorEdit) {		
 
 		bancoTutor = TutorControl.getIntancia();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,24 +113,7 @@ public class TelaCadastroTutor extends JFrame {
 		JButton btnCadastrarTutor = new JButton("CADASTRAR");
 		btnCadastrarTutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				if (tutorAEditar != null) {
-					// EDITAR
-					TutorControl control = TutorControl.getIntancia();
-					boolean valida = control.alterar(tutorEdit, tutorEdit.getCpf());
-
-					if (valida == true) {
-
-						// mensagem sucesso
-						dispose();
-						TelaClinica tC = new TelaClinica();
-						tC.setVisible(true);
-					} else {
-						// mensagem erro
-					}
-
-				} else {
-					// CADASTRAR
+					
 					String nomeTutorStr = txtnome.getText();
 					String cpfTutorStr = txtcpf.getText();
 
@@ -148,18 +130,32 @@ public class TelaCadastroTutor extends JFrame {
 					} else {
 						novoTutor.setCpf(Long.valueOf(cpfTutorStr));
 					}
-
-					boolean inserir = bancoTutor.inserir(novoTutor);
-
-					if (inserir == true) {
-						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-						tutor = novoTutor;
-
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+					
+					if (tutorEdit != null) {
+						boolean valida = bancoTutor.alterar(novoTutor);
+						if (valida == true) {
+							try {
+								JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+								tutor = novoTutor;
+							} catch (Exception e2) {
+								System.out.println(e2);
+								JOptionPane.showMessageDialog(null, "Erro ao Alterar!");
+							}
+						}						
+					}else {
+						boolean valida = bancoTutor.inserir(novoTutor);
+						if (valida == true) {
+							try {
+								JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+								tutor = novoTutor;						
+							} catch (Exception e2) {
+								System.out.println(e2);
+								JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+							}
+						}
 					}
+					
 				}
-			}
 
 		});
 		btnCadastrarTutor.setBounds(50, 196, 120, 23);
@@ -210,10 +206,9 @@ public class TelaCadastroTutor extends JFrame {
 		bnbInserir.setBounds(48, 232, 122, 23);
 		contentPane.add(bnbInserir);
 
-		if (tutorAEditar != null) {
-
-			txtnome.setText(tutorAEditar.getNome());
-			txtcpf.setText(String.valueOf(tutorAEditar.getCpf()));
+		if (tutorEdit != null) {
+			txtnome.setText(tutorEdit.getNome());
+			txtcpf.setText(String.valueOf(tutorEdit.getCpf()));
 
 			lblTituloTutor.setText("Atualizar tutor");
 			btnCadastrarTutor.setText("Atualizar");

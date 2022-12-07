@@ -53,12 +53,13 @@ public class TelaClinica extends JFrame {
 		listaTutoresJList = new JList<>();
 		listaTutoresJList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				TutorEscolhido = listaTutoresJList.getSelectedValue();
+				TutorEscolhido = listaTutoresJList.getSelectedValue();				
 				if (TutorEscolhido != null) {
 					System.out.println(TutorEscolhido);
 				}
 			}
 		});
+		
 		listaTutoresJList.setListData(new Vector<Tutor>(tutorControl.listaPessoas()));
 		listaTutoresJList.updateUI();
 		scrollPane_1.setViewportView(listaTutoresJList);
@@ -70,7 +71,6 @@ public class TelaClinica extends JFrame {
 				telaCadastroTutor.setLocationRelativeTo(null);
 				telaCadastroTutor.setVisible(true);
 				dispose();
-
 			}
 		});
 		btnCadastrar.setBounds(306, 103, 118, 23);
@@ -80,19 +80,20 @@ public class TelaClinica extends JFrame {
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Tutor tutorAtual = listaTutoresJList.getSelectedValue();
-				if (tutorAtual != null) {
-					int val = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + tutorAtual.getNome(),
+				if (TutorEscolhido != null) {
+					int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + TutorEscolhido.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
-					if (val == 0) {	
+					if (confirmacao == 0) {	
 						try {
-							boolean valida = tutorControl.deletar(tutorAtual.getCpf());
-							if (valida == true) {
+							boolean valida = tutorControl.deletar(TutorEscolhido.getCpf());
+							if (valida) {
 								JOptionPane.showMessageDialog(null, "Removido com sucesso!");
-								atualiza();
+								scrollPane_1.updateUI();
+							}else {
+								JOptionPane.showMessageDialog(null, "ERRO AO REMOVER!");
 							}
-						} catch (Exception e2) {
-							System.out.println(e2);
+						} catch (Exception error) {
+							System.out.println(error);
 							JOptionPane.showMessageDialog(null, "Erro ao remover!");
 						}						
 					}
@@ -119,16 +120,15 @@ public class TelaClinica extends JFrame {
 
 		JButton btnAlterar = new JButton("ALTERAR");
 		btnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Tutor tutorAtual = listaTutoresJList.getSelectedValue();
-				if (tutorAtual != null) {
-					int val = JOptionPane.showConfirmDialog(null, "Deseja alterar o animal " + tutorAtual.getNome(),
+			public void actionPerformed(ActionEvent e) {				
+				if (TutorEscolhido != null) {
+					int val = JOptionPane.showConfirmDialog(null, "Deseja alterar o animal " + TutorEscolhido.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
 					if (val == 0) {
 
 						// pegar os dados dos campos de texto
 						dispose();
-						TelaCadastroTutor telaCadTutor = new TelaCadastroTutor(tutorAtual);
+						TelaCadastroTutor telaCadTutor = new TelaCadastroTutor(TutorEscolhido);
 						telaCadTutor.setVisible(true);
 
 					}
@@ -140,10 +140,4 @@ public class TelaClinica extends JFrame {
 		contentPane.add(btnAlterar);
 
 	}
-
-	public void atualiza() {
-		listaTutoresJList.setListData(new Vector<Tutor>(tutorControl.listaPessoas()));
-		listaTutoresJList.updateUI();
-	}
-
 }

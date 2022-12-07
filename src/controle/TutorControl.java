@@ -1,8 +1,6 @@
 package controle;
 
 import java.util.ArrayList;
-
-import modelo.Pessoa;
 import modelo.Tutor;
 
 public class TutorControl {
@@ -19,31 +17,27 @@ public class TutorControl {
 		return tutorControl;
 	}
 
-	public void listaTutor() {
-		for (Pessoa pessoa : tabelaTutores) {
-			System.out.println(" Nome: " + pessoa.getNome() + " " + " Cpf" + pessoa.getCpf());
-		}
-	}
-
 	// INSERT
 	public boolean inserir(Tutor tutor) {
 		if (tutor != null) {
-			TutorControl.tabelaTutores.add(tutor);
+			tabelaTutores.add(tutor);
 			return true;
 		}
 		return false;
 	}
 
 	// UPDATE
-	public boolean alterar(Tutor p, Long cpfPessoa) {
-		for (Tutor tutor : tabelaTutores) {
-			if (tutor.getCpf() == cpfPessoa) {
-				tutor.setNome(p.getNome());
-				tutor.setCpf(p.getCpf());
-				tutor.setAnimais(p.getAnimais());
+	public boolean alterar(Tutor tutorSelecionado) {		
+		for (Tutor tutor : listaPessoas()) {
+			if (tutor.equals(tutorSelecionado)) {
+				tutor.setNome(tutorSelecionado.getNome());
+				tutor.setCpf(tutorSelecionado.getCpf());
+				tutor.setAnimais(tutorSelecionado.getAnimais());				
 				return true;
 			}
+			System.out.println("ate qui foi 2");
 		}
+		System.out.println("ate qui foi 3");
 		return false;
 	}
 
@@ -58,10 +52,12 @@ public class TutorControl {
 		return false;
 	}
 
-	// SELECT
+	// SELECT	
 	public ArrayList<Tutor> listaPessoas() {
-		System.out.println(TutorControl.tabelaTutores);
-		return TutorControl.tabelaTutores;
+		if(tabelaTutores != null) {
+			return tabelaTutores;
+		}
+		return null;
 	}
 
 }

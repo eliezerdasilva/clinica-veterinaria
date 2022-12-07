@@ -96,7 +96,7 @@ public class TelaAnimal extends JFrame {
 				animaisTutor.add(animalEscolhido);
 				tutor.setAnimais(animaisTutor);
 
-				boolean valida = tutorControl.alterar(tutor, tutor.getCpf());
+				boolean valida = tutorControl.alterar(tutor);
 
 				if (valida == true) {
 					JOptionPane.showMessageDialog(null, "Sucesso cadastro do animal");
