@@ -81,7 +81,7 @@ public class TelaClinica extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				if (TutorEscolhido != null) {
-					int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover o animal " + TutorEscolhido.getNome(),
+					int confirmacao = JOptionPane.showConfirmDialog(null, "Deseja remover o tutor " + TutorEscolhido.getNome(),
 							"Confirmação de exclusão", JOptionPane.YES_NO_OPTION);
 					if (confirmacao == 0) {	
 						try {
