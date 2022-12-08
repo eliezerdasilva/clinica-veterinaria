@@ -1,9 +1,5 @@
 # Clínica_veterinária-
-
-<p align="center">
-  <img ![Estudo De Caso - Java] src="https://github.com/eliezerdasilva/clinica-veterinaria/issues/1#issue-1485529648">
-</p>
-
+![2](https://user-images.githubusercontent.com/110643682/206582969-7bf5410c-1ad1-46de-853d-35aed48666f8.png)
 
 
 
