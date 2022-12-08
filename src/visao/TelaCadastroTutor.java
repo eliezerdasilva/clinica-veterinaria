@@ -30,45 +30,51 @@ public class TelaCadastroTutor extends JFrame {
 	private JButton bnbInserir;
 	private Tutor tutor;
 	private JLabel lblNewLabel_2;
+	private JLabel lblNewLabel_3;
 
 	public TelaCadastroTutor(Tutor tutorEdit) {
+		setTitle("Cadastrar Cliente\r\n");
 
 		this.tutor = tutorEdit;
 
 		bancoTutor = TutorControl.getIntancia();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 268, 327);
+		setBounds(100, 100, 635, 550);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 128, 128));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		txtnome = new JTextField();
-		txtnome.setBackground(new Color(192, 192, 192));
-		txtnome.setBounds(63, 74, 119, 20);
+		txtnome.setBackground(new Color(32, 178, 170));
+		txtnome.setBounds(147, 169, 119, 20);
 		contentPane.add(txtnome);
 		txtnome.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Nome :");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setForeground(new Color(32, 178, 170));
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		lblNewLabel.setBackground(new Color(0, 0, 51));
-		lblNewLabel.setBounds(10, 77, 46, 14);
+		lblNewLabel.setBounds(70, 168, 60, 17);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel(" Cpf :");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_1.setBounds(20, 105, 46, 14);
+		lblNewLabel_1.setForeground(new Color(32, 178, 170));
+		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(70, 199, 70, 20);
 		contentPane.add(lblNewLabel_1);
 
 		txtCpf = new JTextField();
-		txtCpf.setBackground(new Color(192, 192, 192));
-		txtCpf.setBounds(63, 105, 119, 20);
+		txtCpf.setBackground(new Color(32, 178, 170));
+		txtCpf.setBounds(147, 200, 119, 20);
 		contentPane.add(txtCpf);
 		txtCpf.setColumns(10);
 
 		JButton btnCadastrarTutor = new JButton("CADASTRAR");
+		btnCadastrarTutor.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+		btnCadastrarTutor.setBackground(new Color(192, 192, 192));
 
 		if (tutorEdit != null) {
 			txtCpf.setEditable(false);
@@ -127,30 +133,19 @@ public class TelaCadastroTutor extends JFrame {
 			}
 
 		});
-		btnCadastrarTutor.setBounds(50, 155, 132, 23);
+		btnCadastrarTutor.setBounds(137, 270, 132, 23);
 		contentPane.add(btnCadastrarTutor);
 
 		lblTituloTutor = new JLabel("Cadastro Cliente");
 		lblTituloTutor.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-fita-de-bookmark-24.png"));
-		lblTituloTutor.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblTituloTutor.setForeground(new Color(0, 0, 0));
-		lblTituloTutor.setBounds(32, 22, 198, 20);
+		lblTituloTutor.setFont(new Font("Trebuchet MS", Font.BOLD, 22));
+		lblTituloTutor.setForeground(new Color(32, 178, 170));
+		lblTituloTutor.setBounds(96, 88, 184, 33);
 		contentPane.add(lblTituloTutor);
 
-		JButton btnNewButton_1 = new JButton("Voltar ");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaClinica telaClinica = new TelaClinica();
-				telaClinica.setLocationRelativeTo(null);
-				telaClinica.setVisible(true);
-				dispose();
-			}
-
-		});
-		btnNewButton_1.setBounds(463, 379, 89, 23);
-		contentPane.add(btnNewButton_1);
-
 		btnNewButton_2 = new JButton("Voltar");
+		btnNewButton_2.setBackground(new Color(192, 192, 192));
+		btnNewButton_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-sair-24.png"));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -160,12 +155,13 @@ public class TelaCadastroTutor extends JFrame {
 				telaClinica.setVisible(true);
 			}
 		});
-		btnNewButton_2.setBounds(50, 223, 132, 23);
+		btnNewButton_2.setBounds(30, 398, 132, 23);
 		contentPane.add(btnNewButton_2);
 
 		bnbInserir = new JButton("Inserir animal");
+		bnbInserir.setBackground(new Color(192, 192, 192));
 		bnbInserir.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-logout-arredondado-acima-30.png"));
-		bnbInserir.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		bnbInserir.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		bnbInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -176,13 +172,18 @@ public class TelaCadastroTutor extends JFrame {
 
 			}
 		});
-		bnbInserir.setBounds(50, 189, 132, 23);
+		bnbInserir.setBounds(231, 398, 132, 23);
 		contentPane.add(bnbInserir);
 
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-contatos-24.png"));
 		lblNewLabel_2.setBounds(182, 22, 46, 24);
 		contentPane.add(lblNewLabel_2);
+		
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\clinica-veterinaria\\img\\images.jpg"));
+		lblNewLabel_3.setBounds(383, 88, 212, 202);
+		contentPane.add(lblNewLabel_3);
 
 		if (tutorEdit != null) {
 			txtnome.setText(tutorEdit.getNome());

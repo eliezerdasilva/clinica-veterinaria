@@ -59,6 +59,7 @@ public class TelaLogin extends JFrame {
 	 * @throws IOException 
 	 */
 	public TelaLogin()  {
+		setTitle("Tela de Login\r\n");
 		setBackground(new Color(0, 255, 127));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 635, 550);
@@ -151,7 +152,7 @@ public class TelaLogin extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\clinica-veterinaria\\img\\images.jpg"));
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 39));
-		lblNewLabel_4.setBounds(398, 62, 225, 226);
+		lblNewLabel_4.setBounds(384, 107, 225, 226);
 		contentPane.add(lblNewLabel_4);
 	}
 }

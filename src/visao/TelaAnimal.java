@@ -23,6 +23,7 @@ import javax.swing.event.ListSelectionListener;
 import controle.TutorControl;
 import modelo.Animal;
 import modelo.Tutor;
+import java.awt.Color;
 
 public class TelaAnimal extends JFrame {
 
@@ -44,29 +45,33 @@ public class TelaAnimal extends JFrame {
 	private JButton btnExcluir;
 	private Animal animalEscolhido = null;
 	private JButton btnNovo;
+	private JLabel lblNewLabel_3;
 
 	public TelaAnimal(Tutor tutor) {
 		this.tutor = tutor;
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 483);
+		setBounds(100, 100, 635, 550);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		nome = new JTextField();
-		nome.setBounds(108, 43, 204, 20);
+		nome.setBounds(108, 100, 106, 20);
 		contentPane.add(nome);
 		nome.setColumns(10);
 
 		raca = new JTextField();
-		raca.setBounds(108, 71, 86, 20);
+		raca.setBounds(108, 151, 106, 20);
 		contentPane.add(raca);
 		raca.setColumns(10);
 
 		JButton btnNewButton = new JButton("Cadastrar");
+		btnNewButton.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+		btnNewButton.setBackground(new Color(192, 192, 192));
 		btnNewButton.setIcon(new ImageIcon(
 				"C:\\Users\\Aluno\\Downloads\\clinica-veterinaria\\clinica-veterinaria\\img\\floppy-disk.png"));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -120,31 +125,36 @@ public class TelaAnimal extends JFrame {
 
 			}
 		});
-		btnNewButton.setBounds(29, 102, 231, 35);
+		btnNewButton.setBounds(29, 193, 283, 35);
 		contentPane.add(btnNewButton);
 
 		cmbAnimal = new JComboBox<>();
-		cmbAnimal.setBounds(109, 12, 106, 20);
+		cmbAnimal.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		cmbAnimal.setBounds(108, 51, 106, 20);
 		contentPane.add(cmbAnimal);
 
 		lblNewLabel = new JLabel(" Tipos :");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel.setBounds(29, 14, 46, 14);
+		lblNewLabel.setForeground(new Color(32, 178, 170));
+		lblNewLabel.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+		lblNewLabel.setBounds(29, 49, 70, 18);
 		contentPane.add(lblNewLabel);
 
 		lblNewLabel_1 = new JLabel("Nome :");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_1.setBounds(29, 45, 46, 14);
+		lblNewLabel_1.setForeground(new Color(32, 178, 170));
+		lblNewLabel_1.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+		lblNewLabel_1.setBounds(30, 98, 69, 18);
 		contentPane.add(lblNewLabel_1);
 
 		lblNewLabel_2 = new JLabel("Raça :");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_2.setBounds(29, 74, 46, 14);
+		lblNewLabel_2.setForeground(new Color(32, 178, 170));
+		lblNewLabel_2.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
+		lblNewLabel_2.setBounds(29, 154, 70, 17);
 		contentPane.add(lblNewLabel_2);
 
 		// mostra animais cadastrados na tabela
 
 		listAnimal = new JList<Animal>();
+		listAnimal.setBackground(new Color(32, 178, 170));
 		listAnimal.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				animalEscolhido = listAnimal.getSelectedValue();
@@ -159,19 +169,24 @@ public class TelaAnimal extends JFrame {
 		});
 
 		btnNewButton_1 = new JButton("Exit");
+		btnNewButton_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
+		btnNewButton_1.setBackground(new Color(192, 192, 192));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaClinica exit = new TelaClinica();
+				exit.setLocationRelativeTo(null);
 				exit.setVisible(true);
 				dispose();
 
 			}
 
 		});
-		btnNewButton_1.setBounds(223, 352, 89, 23);
+		btnNewButton_1.setBounds(326, 465, 283, 35);
 		contentPane.add(btnNewButton_1);
 
-		btnExcluir = new JButton("-");
+		btnExcluir = new JButton("Deletar");
+		btnExcluir.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		btnExcluir.setBackground(new Color(192, 192, 192));
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Animal animalAtual = listAnimal.getSelectedValue();
@@ -187,10 +202,12 @@ public class TelaAnimal extends JFrame {
 				}
 			}
 		});
-		btnExcluir.setBounds(317, 146, 46, 23);
+		btnExcluir.setBounds(29, 466, 283, 34);
 		contentPane.add(btnExcluir);
 
-		btnNovo = new JButton("Novo");
+		btnNovo = new JButton("Limpar\r\n");
+		btnNovo.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
+		btnNovo.setBackground(new Color(192, 192, 192));
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				animalEscolhido = null;
@@ -200,30 +217,25 @@ public class TelaAnimal extends JFrame {
 				btnNewButton.setText("Cadastrar");
 			}
 		});
-		btnNovo.setBounds(274, 108, 89, 23);
+		btnNovo.setBounds(29, 430, 283, 35);
 		contentPane.add(btnNovo);
-
-		JLabel lblCad = new JLabel("Cadastrando animal de:");
-		lblCad.setBounds(29, 406, 186, 14);
-		contentPane.add(lblCad);
-
-		JLabel lblNomeTutor = new JLabel("");
-		lblNomeTutor.setBounds(166, 406, 46, 14);
-		contentPane.add(lblNomeTutor);
-
-		/**
-		 * Seta o nome do tutor
-		 */
-		lblNomeTutor.setText(tutor.getNome());
 
 		cmbAnimal.addItem("Cachorro");
 		cmbAnimal.addItem("Gato");
-		cmbAnimal.addItem("Outros");
+		cmbAnimal.addItem("Ave");
+		cmbAnimal.addItem("Sapo");
+		cmbAnimal.addItem("Peixe");
+		cmbAnimal.addItem("Roedor");
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(29, 148, 283, 194);
+		scrollPane.setBounds(29, 231, 283, 194);
 		contentPane.add(scrollPane);
 		scrollPane.setViewportView(listAnimal);
+		
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\clinica-veterinaria\\img\\images.jpg"));
+		lblNewLabel_3.setBounds(365, 25, 231, 225);
+		contentPane.add(lblNewLabel_3);
 
 		atualiza();
 	}

@@ -50,7 +50,7 @@ public class TelaCadastroFunc extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		txtlogin = new JTextField();
-		txtlogin.setBackground(new Color(192, 192, 192));
+		txtlogin.setBackground(new Color(32, 178, 170));
 		txtlogin.setBounds(118, 185, 86, 20);
 		contentPane.add(txtlogin);
 		txtlogin.setColumns(10);
@@ -62,12 +62,13 @@ public class TelaCadastroFunc extends JFrame {
 		contentPane.add(lblNewLabel_2);
 
 		txtSenha = new JTextField();
-		txtSenha.setBackground(new Color(192, 192, 192));
+		txtSenha.setBackground(new Color(32, 178, 170));
 		txtSenha.setBounds(118, 230, 86, 20);
 		contentPane.add(txtSenha);
 		txtSenha.setColumns(10);
 
 		JButton btnNewButton = new JButton("Cadastrar");
+		btnNewButton.setBackground(new Color(192, 192, 192));
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		
 		btnNewButton.addActionListener(new ActionListener() {
@@ -116,6 +117,7 @@ public class TelaCadastroFunc extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnVoltar = new JButton("VOLTAR");
+		btnVoltar.setBackground(new Color(192, 192, 192));
 		btnVoltar.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
