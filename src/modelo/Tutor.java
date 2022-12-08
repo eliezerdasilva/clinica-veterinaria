@@ -16,6 +16,7 @@ public class Tutor extends Pessoa {
 
 	@Override
 	public String toString() {
-		return " Tutor" + " Nome : " + getNome() + " CPF : " + getCpf() + "  Animais " + getAnimais();
+
+		return (" Tutor" + " Nome : " + getNome() + " CPF : " + getCpf() + "  Animais " + getAnimais());
 	}
 }
