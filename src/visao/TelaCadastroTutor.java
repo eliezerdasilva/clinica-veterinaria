@@ -83,6 +83,7 @@ public class TelaCadastroTutor extends JFrame {
 
 		btnCadastrarTutor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int tudoValidado = 0;
 
 				String nomeTutorStr = txtnome.getText();
 				String cpfTutorStr = txtCpf.getText();
@@ -93,43 +94,47 @@ public class TelaCadastroTutor extends JFrame {
 					JOptionPane.showMessageDialog(null, "Nenhum nome preenchido!");
 				} else {
 					novoTutor.setNome(nomeTutorStr);
+					tudoValidado++;
 				}
 
 				if (cpfTutorStr.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Nenhum CPF preenchido!");
 				} else {
 					novoTutor.setCpf(Long.valueOf(cpfTutorStr));
+					tudoValidado++;
 				}
 
-				if (tutorEdit != null) {
+				if (tudoValidado == 2) {
 
-					boolean valida = bancoTutor.alterar(novoTutor, tutorEdit.getCpf());
-					if (valida == true) {
-						try {
-							JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-							tutor = novoTutor;
-							dispose();
-							TelaClinica tC = new TelaClinica();
-							tC.setLocationRelativeTo(null);
-							tC.setVisible(true);
-						} catch (Exception e2) {
-							System.out.println(e2);
-							JOptionPane.showMessageDialog(null, "Erro ao Alterar!");
+					if (tutorEdit != null) {
+
+						boolean valida = bancoTutor.alterar(novoTutor, tutorEdit.getCpf());
+						if (valida == true) {
+							try {
+								JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+								tutor = novoTutor;
+								dispose();
+								TelaClinica tC = new TelaClinica();
+								tC.setLocationRelativeTo(null);
+								tC.setVisible(true);
+							} catch (Exception e2) {
+								System.out.println(e2);
+								JOptionPane.showMessageDialog(null, "Erro ao Alterar!");
+							}
 						}
-					}
-				} else {
-					boolean valida = bancoTutor.inserir(novoTutor);
-					if (valida == true) {
-						try {
-							JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-							tutor = novoTutor;
-						} catch (Exception e2) {
-							System.out.println(e2);
-							JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+					} else {
+						boolean valida = bancoTutor.inserir(novoTutor);
+						if (valida == true) {
+							try {
+								JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+								tutor = novoTutor;
+							} catch (Exception e2) {
+								System.out.println(e2);
+								JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+							}
 						}
 					}
 				}
-
 			}
 
 		});
@@ -164,13 +169,14 @@ public class TelaCadastroTutor extends JFrame {
 		bnbInserir.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		bnbInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				if(bancoTutor.isEmpty()) {
-//					
-//				}
-				TelaAnimal telaanimal = new TelaAnimal(tutor);
-				telaanimal.setLocationRelativeTo(null);
-				telaanimal.setVisible(true);
-				dispose();
+				if (tutor != null) {
+					TelaAnimal telaanimal = new TelaAnimal(tutor);
+					telaanimal.setLocationRelativeTo(null);
+					telaanimal.setVisible(true);
+					dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Não há nenhum Cliente!");
+				}
 
 			}
 		});
@@ -181,7 +187,7 @@ public class TelaCadastroTutor extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-contatos-24.png"));
 		lblNewLabel_2.setBounds(182, 22, 46, 24);
 		contentPane.add(lblNewLabel_2);
-		
+
 		lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\clinica-veterinaria\\img\\images.jpg"));
 		lblNewLabel_3.setBounds(383, 88, 212, 202);

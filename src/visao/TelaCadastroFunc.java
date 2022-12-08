@@ -70,9 +70,11 @@ public class TelaCadastroFunc extends JFrame {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.setBackground(new Color(192, 192, 192));
 		btnNewButton.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
-		
+
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				int tudoValidado = 0;
 
 				String login = txtlogin.getText();
 				String senha = txtSenha.getText();
@@ -83,31 +85,35 @@ public class TelaCadastroFunc extends JFrame {
 					JOptionPane.showMessageDialog(null, "Nenhum nome preenchido!");
 				} else {
 					funcionario.setLogin(login);
+					tudoValidado++;
 				}
 
 				if (senha.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Nenhum CPF preenchido!");
 				} else {
 					funcionario.setSenha(senha);
+					tudoValidado++;
 				}
 
-				FuncionarioControl tabelaFuncionario = FuncionarioControl.getInstancia();
-				boolean inserir = tabelaFuncionario.inserir(funcionario);
+				if (tudoValidado == 2) {
+					FuncionarioControl tabelaFuncionario = FuncionarioControl.getInstancia();
+					boolean inserir = tabelaFuncionario.inserir(funcionario);
 
-				if (inserir == true) {
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
-					dispose();
+					if (inserir == true) {
+						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+						dispose();
 
-					/*
-					 * System.out.println(funcionario); TelaCadastroFunc telaLogin = new
-					 * TelaCadastroFunc(); telaLogin.setLocationRelativeTo(null);
-					 * telaLogin.setVisible(true);
-					 */
-					TelaLogin telaLogin = new TelaLogin();
-					telaLogin.setLocationRelativeTo(null);
-					telaLogin.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+						/*
+						 * System.out.println(funcionario); TelaCadastroFunc telaLogin = new
+						 * TelaCadastroFunc(); telaLogin.setLocationRelativeTo(null);
+						 * telaLogin.setVisible(true);
+						 */
+						TelaLogin telaLogin = new TelaLogin();
+						telaLogin.setLocationRelativeTo(null);
+						telaLogin.setVisible(true);
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
+					}
 				}
 
 			}
@@ -129,7 +135,7 @@ public class TelaCadastroFunc extends JFrame {
 		});
 		btnVoltar.setBounds(10, 462, 116, 38);
 		contentPane.add(btnVoltar);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\clinica-veterinaria\\img\\images.jpg"));
 		lblNewLabel_3.setBounds(384, 85, 225, 210);
