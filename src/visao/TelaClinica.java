@@ -121,7 +121,7 @@ public class TelaClinica extends JFrame {
 		btnExcluir.setBounds(149, 345, 118, 23);
 		contentPane.add(btnExcluir);
 
-		JButton btnSair = new JButton("EXIT");
+		JButton btnSair = new JButton("VOLTAR");
 		btnSair.setBackground(new Color(192, 192, 192));
 		btnSair.setFont(new Font("Trebuchet MS", Font.PLAIN, 11));
 		btnSair.setIcon(new ImageIcon("C:\\Users\\Aluno\\Downloads\\icons8-sair-24.png"));

@@ -164,7 +164,9 @@ public class TelaCadastroTutor extends JFrame {
 		bnbInserir.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
 		bnbInserir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+//				if(bancoTutor.isEmpty()) {
+//					
+//				}
 				TelaAnimal telaanimal = new TelaAnimal(tutor);
 				telaanimal.setLocationRelativeTo(null);
 				telaanimal.setVisible(true);

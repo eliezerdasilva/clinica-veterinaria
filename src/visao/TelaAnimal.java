@@ -168,7 +168,7 @@ public class TelaAnimal extends JFrame {
 			}
 		});
 
-		btnNewButton_1 = new JButton("Exit");
+		btnNewButton_1 = new JButton("Voltar");
 		btnNewButton_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 18));
 		btnNewButton_1.setBackground(new Color(192, 192, 192));
 		btnNewButton_1.addActionListener(new ActionListener() {
