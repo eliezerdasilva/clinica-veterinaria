@@ -39,7 +39,9 @@ Tem como objetivo capacitar e desenvolver técnicas de programação.</p><br>
 
 #  📉 Diagrama de Classes
 
-![estudocaso2](https://user-images.githubusercontent.com/110643682/206592792-812017ad-a3b9-4829-9a6c-8d4854a053a0.png)
+
+![atualizacap](https://user-images.githubusercontent.com/110643682/206697425-70afd201-b165-41d9-88c9-a3b455fa79ed.png)
+
 
 
 
